@@ -20,6 +20,8 @@
     <IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
+    <Version>1.0.1</Version>
+    <PackageId>Haley.Abstractions</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
