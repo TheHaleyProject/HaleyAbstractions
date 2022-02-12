@@ -13,14 +13,14 @@
     <RepositoryUrl>https://github.com/TheHaleyProject/HaleyAbstractions</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>Abstractions Haley</PackageTags>
-    <PackageReleaseNotes>Pilot</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated MVVM Abstractions</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>Haley.png</PackageIcon>
     <IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageId>Haley.Abstractions</PackageId>
     <RootNamespace>Haley.Abstractions</RootNamespace>
     <AssemblyName>Haley.Abstractions</AssemblyName>
