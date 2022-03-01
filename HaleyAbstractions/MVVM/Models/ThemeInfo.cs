@@ -5,8 +5,11 @@ using System.Windows;
 
 namespace Haley.Models
 {
-    public class ThemeInfoBase
+    public class ThemeInfo
     {
+
+        public string Id { get; }
+
         /// <summary>
         /// A name for the theme
         /// </summary>
@@ -15,8 +18,9 @@ namespace Haley.Models
         /// Path of the resource dictionary containing the theme values.
         /// </summary>
         public Uri Path { get; set; }
-        public ThemeInfoBase(string name, Uri path) 
+        public ThemeInfo(string name, Uri path) 
         {
+            Id = Guid.NewGuid().ToString();
             Name = name;
             Path = path; 
         }

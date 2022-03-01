@@ -8,12 +8,12 @@ namespace Haley.Models
 {
     public class InternalThemeData
     {
-        public Dictionary<InternalThemeMode,ThemeInfoBase> InfoDic { get; private set; }
+        public Dictionary<InternalThemeMode,ThemeInfo> InfoDic { get; private set; }
         public Dictionary<object,InternalThemeMode> Themes { get; } //User will only assign this value.
 
-        public void SetInfoDic(Dictionary<InternalThemeMode, ThemeInfoBase> info_dic)
+        public void SetInfoDic(Dictionary<InternalThemeMode, ThemeInfo> info_dic)
         {
-            if (info_dic == null) info_dic = new Dictionary<InternalThemeMode, ThemeInfoBase>();
+            if (info_dic == null) info_dic = new Dictionary<InternalThemeMode, ThemeInfo>();
             InfoDic = info_dic;
         }
 
@@ -38,7 +38,7 @@ namespace Haley.Models
 
         public InternalThemeData() 
         {
-            InfoDic = new Dictionary<InternalThemeMode, ThemeInfoBase>();
+            InfoDic = new Dictionary<InternalThemeMode, ThemeInfo>();
             Themes = new Dictionary<object, InternalThemeMode>();
         }
     }
