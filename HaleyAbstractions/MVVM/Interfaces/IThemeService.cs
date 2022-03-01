@@ -7,7 +7,6 @@ using Haley.Models;
 
 namespace Haley.Abstractions
 {
-    public delegate bool ThemeChangeHandler(ThemeInfoBase theme, out ThemeInfoBase newTheme);
     public interface IThemeService
     {
         event EventHandler<(object newTheme, object oldTheme)> ThemeChanged;
@@ -38,23 +37,12 @@ namespace Haley.Abstractions
         /// <param name="targetAssembly"></param>
         /// <returns></returns>
         bool Register(object key, ThemeInfoBase value, Assembly targetAssembly);
-        /// <summary>
-        /// Before the theme gets changed, raises a call back.
-        /// </summary>
-        /// <param name="ChangeCallBack"></param>
-        bool AttachCallBack(ThemeChangeHandler ChangeCallBack,bool callBeforeChange = false);
-        /// <summary>
-        /// Before the theme gets changed, raises a call back.
-        /// </summary>
-        /// <param name="ChangeCallBack"></param>
-        /// <param name="targetAssembly"></param>
-        bool AttachCallBack(ThemeChangeHandler ChangeCallBack,Assembly targetAssembly, bool callBeforeChange = false);
         bool ChangeTheme(object newThemeKey, bool showNotifications = false);
         bool ChangeTheme(object newThemeKey,object oldThemeKey,object frameworkElement,Assembly targetAssembly, ThemeSearchMode priority = ThemeSearchMode.Application, bool raiseChangeEvents = true, bool showNotifications = false);
         bool IsThemeKeyRegistered(object key, ThemeDictionary dicType);
         bool IsThemeKeyRegistered(object key);
-        List<ThemeInfoBase> GetThemeInfos(object key);
-        List<string> GetThemes();
+        List<ThemeInfoBase> GetThemeInfos(object key, ThemeDictionary dicType);
+        List<object> GetThemes(ThemeDictionary dicType);
         void SetStartupTheme(object startupKey);
         bool ThrowExceptionsOnFailure { get; set; }
     }
