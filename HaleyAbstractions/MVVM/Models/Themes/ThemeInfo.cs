@@ -14,6 +14,7 @@ namespace Haley.Models
         /// Path of the resource dictionary containing the theme values.
         /// </summary>
         public Uri Path { get; set; }
+        public bool AddCopyAtRoot { get; set; }
         public ThemeInfo(Uri path,string groupId) 
         {
             Id = Guid.NewGuid().ToString();
@@ -22,7 +23,8 @@ namespace Haley.Models
                 throw new ArgumentNullException(nameof(groupId));
             }
             GroupId = groupId;
-            Path = path; 
+            Path = path;
+            AddCopyAtRoot = false;
         }
 
         public override string ToString()
