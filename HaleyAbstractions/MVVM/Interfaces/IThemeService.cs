@@ -9,42 +9,42 @@ namespace Haley.Abstractions
 {
     public interface IThemeService
     {
-        event EventHandler<(object newTheme, object oldTheme)> ThemeChanged;
-        object StartupTheme { get; }
-        object ActiveTheme { get; }
-        InternalThemeData InternalThemes { get; }
-        /// <summary>
-        /// Global registration irrespective of the assembly that calls.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        bool RegisterGlobal(object key, ThemeInfo value);
 
+        #region Properties
         /// <summary>
-        /// Register a specific theme against a key
+        /// Event that gets raised whenever the theme is changed.
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        bool Register(object key, ThemeInfo value);
-        bool AttachInternalTheme(InternalThemeData internal_data);
+        event EventHandler<(object newTheme, object oldTheme)> ThemeChanged;
         /// <summary>
-        /// Register a theme against a key that affects an assembly
+        /// The startup theme of all the registered assemblies. Should the reflect the actual value when building the code.
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="targetAssembly"></param>
+        object StartupTheme { get; }
+        /// <summary>
+        /// Active global theme. Cannot set it directly. This gets changed when theme change methods are called.
+        /// </summary>
+        object ActiveTheme { get; }
+        ExceptionHandling ErrorHandling { get; set; }
+        bool EnableNotifications { get; set; }
+
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Use any one of the three themeBuilders: AssemblyThemeBuilder, IndependentThemeBuilder, InternalThemeBuilder
+        /// </summary>
+        /// <param name="builder"></param>
         /// <returns></returns>
-        bool Register(object key, ThemeInfo value, Assembly targetAssembly);
-        bool ChangeTheme(object newThemeKey, bool showNotifications = false);
-        bool ChangeTheme(object newThemeKey, object oldThemeKey, object frameworkElement, Assembly targetAssembly, ThemeSearchMode searchMode = ThemeSearchMode.Application, bool raiseChangeEvents = true, bool showNotifications = false);
-        bool IsThemeKeyRegistered(object key, ThemeDictionary dicType);
+        string Register(ThemeBuilderBase builder);
+        bool ChangeTheme(object newThemeKey);
+        bool ChangeTheme(object newThemeKey, object oldThemeKey, object frameworkElement, Assembly targetAssembly, ThemeSearchMode searchMode = ThemeSearchMode.Application);
+        bool IsThemeKeyRegistered(object key, ThemeRegistrationMode dicType);
         bool IsThemeKeyRegistered(object key);
-        List<ThemeInfo> GetThemeInfos(object key, ThemeDictionary dicType);
-        List<object> GetThemes(ThemeDictionary dicType);
-        void SetStartupTheme(object startupKey);
-        bool ThrowExceptionsOnFailure { get; set; }
-        bool EnableTrackerCache { get; set; }
+        List<ThemeInfo> GetThemeInfos(object key, ThemeRegistrationMode dicType);
+        List<object> GetThemes(ThemeRegistrationMode dicType);
+        List<object> GetAllThemeKeys();
+        bool SetStartupTheme(object startupKey);
+        bool SetupInternalTheme(Func<InternalThemeProvider> provider);
+        bool BuildAndFillMissing();
+        #endregion
     }
 }
