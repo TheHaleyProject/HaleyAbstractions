@@ -23,18 +23,28 @@ namespace Haley.Abstractions
         /// Active global theme. Cannot set it directly. This gets changed when theme change methods are called.
         /// </summary>
         object ActiveTheme { get; }
+        /// <summary>
+        /// How the errors should be handled when occurred. 
+        /// </summary>
         ExceptionHandling ErrorHandling { get; set; }
+        /// <summary>
+        /// Apart from errors, there are few theme change notifications which could guide the development process. This flag shows/supresses the notifications.
+        /// </summary>
         bool EnableNotifications { get; set; }
+        /// <summary>
+        /// Affects the themes replace mechanism
+        /// </summary>
+        ThemeReplaceMode ReplaceMode { get; set; }
 
         #endregion
 
         #region Methods
         /// <summary>
-        /// Use any one of the three themeBuilders: AssemblyThemeBuilder, IndependentThemeBuilder, InternalThemeBuilder
+        /// Register a theme group.
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">Use any one of the three themeBuilders: AssemblyThemeBuilder, IndependentThemeBuilder, InternalThemeBuilder</param>
         /// <returns></returns>
-        string Register(ThemeBuilderBase builder);
+        string RegisterGroup(ThemeBuilderBase builder);
         bool ChangeTheme(object newThemeKey);
         bool ChangeTheme(object newThemeKey, object oldThemeKey, object frameworkElement, Assembly targetAssembly, ThemeSearchMode searchMode = ThemeSearchMode.Application);
         bool IsThemeKeyRegistered(object key, ThemeRegistrationMode dicType);
