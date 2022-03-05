@@ -20,7 +20,7 @@
     <IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <PackageId>Haley.Abstractions</PackageId>
     <RootNamespace>Haley.Abstractions</RootNamespace>
     <AssemblyName>Haley.Abstractions</AssemblyName>

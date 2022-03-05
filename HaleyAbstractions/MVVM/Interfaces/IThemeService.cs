@@ -14,7 +14,7 @@ namespace Haley.Abstractions
         /// <summary>
         /// Event that gets raised whenever the theme is changed.
         /// </summary>
-        event EventHandler<(object newTheme, object oldTheme)> ThemeChanged;
+        event EventHandler<object> ThemeChanged;
         /// <summary>
         /// The startup theme of all the registered assemblies. Should the reflect the actual value when building the code.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Haley.Abstractions
         /// <returns></returns>
         string RegisterGroup(ThemeBuilderBase builder);
         bool ChangeTheme(object newThemeKey);
-        bool ChangeTheme(object newThemeKey, object oldThemeKey, object frameworkElement, Assembly targetAssembly, ThemeSearchMode searchMode = ThemeSearchMode.Application);
+        bool ChangeTheme(object newThemeKey, object frameworkElement, Assembly targetAssembly, ThemeSearchMode searchMode = ThemeSearchMode.Application);
         bool IsThemeKeyRegistered(object key, ThemeRegistrationMode dicType);
         bool IsThemeKeyRegistered(object key);
         List<ThemeInfo> GetThemeInfos(object key, ThemeRegistrationMode dicType);
@@ -55,6 +55,8 @@ namespace Haley.Abstractions
         bool SetStartupTheme(object startupKey);
         bool SetupInternalTheme(Func<InternalThemeProvider> provider);
         bool BuildAndFillMissing();
+        void SyncAllWithActiveTheme();
+        List<ThemeInfo> GetAllRegisteredThemeInfos();
         #endregion
     }
 }
