@@ -8,13 +8,13 @@ namespace Haley.Abstractions
         string Id { get;}
 
         #region registration methods
-        string Register<VMType, ViewType>(VMType InputViewModel=null, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.Singleton)
+        string Register<VMType, ViewType>(VMType InputViewModel=null, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
-        string Register<VMType, ViewType>(string key, VMType InputViewModel = null, RegisterMode mode = RegisterMode.Singleton)
+        string Register<VMType, ViewType>(string key, VMType InputViewModel = null, RegisterMode mode = RegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
-        string Register<VMType, ViewType>(Enum key, VMType InputViewModel=null, RegisterMode mode = RegisterMode.Singleton)
+        string Register<VMType, ViewType>(Enum key, VMType InputViewModel=null, RegisterMode mode = RegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
 
