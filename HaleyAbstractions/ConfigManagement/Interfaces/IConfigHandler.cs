@@ -10,5 +10,6 @@ namespace Haley.Abstractions
     {
         void SaveConfig();
         void UpdateConfig(IConfig config);
+        IConfig PrepareDefault();
     }
 }

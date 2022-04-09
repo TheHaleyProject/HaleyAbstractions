@@ -19,8 +19,13 @@ namespace Haley.Abstractions
         void SetBasePath(string base_path); //If not provided, it gets stored in the ex
         string GetBasePath();
         string GetSavePath(IConfigInfo info);
-        void SetProcessors(Func<string, string> presave_processor, Func<string, string> postload_processor);
+        void SetProcessors(Func<IConfigInfo,string, string> presave_processor, Func<IConfigInfo,string, string> postload_processor);
         void LoadAllConfig();
         void LoadConfig(string key);
+        /// <summary>
+        /// Resets to default config.
+        /// </summary>
+        /// <param name="key"></param>
+        void ResetConfig(string key);
     }
 }
