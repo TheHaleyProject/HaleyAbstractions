@@ -8,7 +8,7 @@ namespace Haley.Abstractions
 {
     public interface IConfigHandler
     {
-        void SaveConfig();
+        void SaveConfig(ref IConfig config);
         void UpdateConfig(IConfig config);
         IConfig PrepareDefault();
     }
