@@ -9,6 +9,13 @@ namespace Haley.Models
     public sealed class RegisterLoad :LoadBase, IRegisterLoad
     {
         public object ConcreteInstance { get; set; }
+        public Func<object> InstanceCreator { get; private set; }
+        public bool SetInstanceCreator(Func<object> creator)
+        {
+            if (InstanceCreator != null || creator == null) return false;
+            InstanceCreator = creator;
+            return true;
+        }
         public RegisterMode Mode { get; }
         public ResolveLoad Convert(string contract_name, Type contract_parent, ResolveMode mode)
         {
