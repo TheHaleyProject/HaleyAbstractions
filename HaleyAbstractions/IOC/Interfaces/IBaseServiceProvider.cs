@@ -43,5 +43,7 @@ namespace Haley.Abstractions
         object ResolveTransient(Type contract_type, IMappingProvider mapping_provider, MappingLevel mapping_level = MappingLevel.CurrentWithDependencies);
         object ResolveTransient(string priority_key, Type contract_type,IMappingProvider mapping_provider, MappingLevel mapping_level = MappingLevel.CurrentWithDependencies);
         #endregion
+
+        
     }
 }

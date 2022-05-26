@@ -11,7 +11,10 @@ namespace Haley.Abstractions
     {
         event EventHandler<IBaseContainer> ChildCreated;
         event EventHandler<string> ContainerDisposed;
+        bool OnDemandResolution { get; }
+        void SetOnDemandResolution(bool flag);
         ExceptionHandling ErrorHandling { get; set; }
+        bool TrySetResolutionOverride(Func<ResolveLoad, object> overrideCallback); //Can be set only once.
         /// <summary>
         /// Create a child container
         /// </summary>
