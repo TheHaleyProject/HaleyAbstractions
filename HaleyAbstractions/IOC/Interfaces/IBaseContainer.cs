@@ -11,10 +11,10 @@ namespace Haley.Abstractions
     {
         event EventHandler<IBaseContainer> ChildCreated;
         event EventHandler<string> ContainerDisposed;
-        bool OnDemandResolution { get; }
-        void SetOnDemandResolution(bool flag);
+        bool ResolveOnlyOnDemand { get; }
+        void SetResolveOnlyOnDemandMode(bool flag);
         ExceptionHandling ErrorHandling { get; set; }
-        bool TrySetResolutionOverride(Func<ResolveLoad, object> overrideCallback); //Can be set only once.
+        bool TrySetResolutionOverride(Func<ResolveLoad, string, object> overrideCallback); //Can be set only once.
         /// <summary>
         /// Create a child container
         /// </summary>
@@ -22,6 +22,13 @@ namespace Haley.Abstractions
         /// <param name="ignoreParents">Will not ignore the UniversalSingleton Resolutions</param>
         /// <returns></returns>
         IBaseContainer CreateChildContainer(string name = null,bool stopCheckingParents = false);
+
+        /// <summary>
+        /// Gets the top level child container
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IBaseContainer GetChildContainer(string id);
         #region Validation Methods
         (bool status, string message,IRegisterLoad load) CheckIfRegistered(Type contract_type,string priority_key,bool checkInParents = false);
         (bool status, string message, IRegisterLoad load) CheckIfRegistered<TContract>(string priority_key, bool checkInParents = false);
