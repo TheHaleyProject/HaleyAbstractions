@@ -1,4 +1,6 @@
 ﻿using Haley.Enums;
+using System.Linq;
+using System;
 
 namespace Haley.Abstractions
 {
@@ -8,5 +10,9 @@ namespace Haley.Abstractions
         new string Register<VMType, ViewType>(VMType InputViewModel = null, bool use_vm_as_key = false, RegisterMode mode = RegisterMode.ContainerSingleton)
            where VMType : class, IHaleyVM
            where ViewType : class;
+
+        new string DelegateRegister<VMType, ViewType>(Func<VMType> creator, bool use_vm_as_key = false, RegisterMode mode = RegisterMode.ContainerSingleton)
+          where VMType : class, IHaleyVM
+          where ViewType : class;
     }
 }

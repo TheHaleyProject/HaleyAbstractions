@@ -11,13 +11,16 @@ namespace Haley.Abstractions
         string Register<VMType, ViewType>(VMType InputViewModel=null, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
-        string Register<VMType, ViewType>(string key, VMType InputViewModel = null, RegisterMode mode = RegisterMode.ContainerSingleton)
-            where VMType : class, BaseVMType
-            where ViewType : class;
-        string Register<VMType, ViewType>(Enum key, VMType InputViewModel=null, RegisterMode mode = RegisterMode.ContainerSingleton)
+        string Register<VMType, ViewType>(object key, VMType InputViewModel = null, RegisterMode mode = RegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
 
+        string DelegateRegister<VMType, ViewType>(Func<VMType> creator, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.ContainerSingleton)
+            where VMType : class, BaseVMType
+            where ViewType : class;
+        string DelegateRegister<VMType, ViewType>(object key, Func<VMType> creator, RegisterMode mode = RegisterMode.ContainerSingleton)
+            where VMType : class, BaseVMType
+            where ViewType : class;
         #endregion
 
         #region View Generation Methods
