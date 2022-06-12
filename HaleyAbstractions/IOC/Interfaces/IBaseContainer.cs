@@ -59,5 +59,7 @@ namespace Haley.Abstractions
         bool DelegateRegister<TConcrete>(string priority_key, Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class;
         bool DelegateRegister<TContract, TConcrete>(string priority_key, Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
         #endregion
+
+        bool RegisterLoad(RegisterLoad load);  //Direct register
     }
 }
