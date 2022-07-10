@@ -13,14 +13,14 @@
     <RepositoryUrl>https://github.com/TheHaleyProject/HaleyAbstractions</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>Abstractions Haley</PackageTags>
-    <PackageReleaseNotes>Updated IOC abstractions</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated ConfigManager methods</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>Haley.png</PackageIcon>
     <IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
-    <Version>1.0.16</Version>
+    <Version>1.0.16.1</Version>
     <PackageId>Haley.Abstractions</PackageId>
     <RootNamespace>Haley.Abstractions</RootNamespace>
     <AssemblyName>Haley.Abstractions</AssemblyName>

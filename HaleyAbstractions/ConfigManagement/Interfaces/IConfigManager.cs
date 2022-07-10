@@ -15,7 +15,7 @@ namespace Haley.Abstractions
         IConfigInfo Register(IConfigInfo info,IConfig data);
         IConfigInfo Register(string key, Type configurationType, IConfig data, IConfigHandler handler);
         void SaveAll();
-        void Save(string key);
+        bool Save(string key);
         void SetBasePath(string base_path); //If not provided, it gets stored in the ex
         string GetBasePath();
         string GetSavePath(IConfigInfo info);
