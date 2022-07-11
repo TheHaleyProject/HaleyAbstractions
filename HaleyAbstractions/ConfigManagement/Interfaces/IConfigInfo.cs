@@ -13,7 +13,6 @@ namespace Haley.Abstractions
         /// </summary>
         string Name { get; }
         string Id { get; }
-        IConfigHandler Handler { get; }
         IConfigInfo SetConfigType<T>() where T : IConfig;
         IConfigInfo SetConfigType(Type targetType);
         Type ConfigType { get; }

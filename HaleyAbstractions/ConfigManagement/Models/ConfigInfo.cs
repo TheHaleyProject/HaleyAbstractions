@@ -17,8 +17,6 @@ namespace Haley.Models
 
         public string StorageDirectory { get; }
 
-        public IConfigHandler Handler { get; }
-
         public Type ConfigType { get; private set; }
 
         public IConfigInfo SetConfigType<T>() where T:IConfig
@@ -33,16 +31,15 @@ namespace Haley.Models
             return this;
         }
 
-        public ConfigInfo(string name, IConfigHandler handler) : this(name, null,handler)
+        public ConfigInfo(string name) : this(name, null)
         {
         }
 
-        public ConfigInfo (string name,string storageDir,IConfigHandler handler)
+        public ConfigInfo (string name,string storageDir)
         {
             Name = name;
             Id = Guid.NewGuid().ToString();
             StorageDirectory = storageDir;
-            Handler = handler;
         }
     }
 }
