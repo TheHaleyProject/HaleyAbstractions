@@ -8,7 +8,8 @@ namespace Haley.Abstractions
 {
     public interface IConfigHandler
     {
-        void OnConfigLoaded(IConfig config);
+        Guid UniqueId { get; set; }
+        Task OnConfigLoaded(IConfig config);
         IConfig PrepareDefaultConfig();
         IConfig GetUpdatedConfig();
     }
