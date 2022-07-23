@@ -12,10 +12,11 @@ namespace Haley.Abstractions
         bool UseCustomProcessors { get; set; }
         bool UseCustomSerializers { get; set; }
         bool UpdateHandlerOnFailedRegistration { get; set; }
+        bool ReloadConfigOnHandlerUpdate { get; set; }
         string FileExtension { get; set; }
 
         IConfig GetConfig(string key);
-        bool UpdateConfig(string key, IConfig config);
+        Task<bool> UpdateConfig(string key, IConfig config);
         IEnumerable<IConfig> GetAllConfig();
         bool TryRegister(IConfigInfo info, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo);
         bool TryRegister(string key, Type configurationType, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo);
@@ -28,11 +29,11 @@ namespace Haley.Abstractions
         void SetProcessors(Func<IConfigInfo,string, string> presave_processor, Func<IConfigInfo,string, string> postload_processor);
         void SetSerializer(Func<IConfig, string> serializer, Func<string, IConfig> deserializer);
         Task LoadAllConfig();
-        Task LoadConfig(string key);
+        Task<bool> LoadConfig(string key);
         /// <summary>
         /// Resets to default config.
         /// </summary>
         /// <param name="key"></param>
-        void ResetConfig(string key);
+        Task ResetConfig(string key);
     }
 }
