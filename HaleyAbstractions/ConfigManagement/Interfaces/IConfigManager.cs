@@ -11,6 +11,7 @@ namespace Haley.Abstractions
     {
         bool UseCustomProcessors { get; set; }
         bool UseCustomSerializers { get; set; }
+        bool UpdateHandlerOnFailedRegistration { get; set; }
         string FileExtension { get; set; }
 
         IConfig GetConfig(string key);
