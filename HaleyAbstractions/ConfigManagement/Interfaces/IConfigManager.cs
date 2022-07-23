@@ -11,15 +11,14 @@ namespace Haley.Abstractions
     {
         bool UseCustomProcessors { get; set; }
         bool UseCustomSerializers { get; set; }
-        bool UpdateHandlerOnFailedRegistration { get; set; }
         bool ReloadConfigOnHandlerUpdate { get; set; }
         string FileExtension { get; set; }
 
         IConfig GetConfig(string key);
         Task<bool> UpdateConfig(string key, IConfig config);
         IEnumerable<IConfig> GetAllConfig();
-        bool TryRegister(IConfigInfo info, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo);
-        bool TryRegister(string key, Type configurationType, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo);
+        bool TryRegister(IConfigInfo info, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
+        bool TryRegister(string key, Type configurationType, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
         bool TryUpdateHandler(string key, IConfigHandler handler);
         void SaveAll();
         bool Save(string key);
