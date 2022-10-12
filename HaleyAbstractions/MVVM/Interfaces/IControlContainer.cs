@@ -11,7 +11,7 @@ namespace Haley.Abstractions
            where VMType : class, IHaleyVM
            where ViewType : class;
 
-        new string DelegateRegister<VMType, ViewType>(Func<VMType> creator, bool use_vm_as_key = false, RegisterMode mode = RegisterMode.ContainerSingleton)
+        new string LazyRegister<VMType, ViewType>(Func<VMType> creator, bool use_vm_as_key = false, RegisterMode mode = RegisterMode.ContainerSingleton)
           where VMType : class, IHaleyVM
           where ViewType : class;
     }

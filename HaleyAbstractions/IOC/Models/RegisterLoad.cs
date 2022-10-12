@@ -10,10 +10,12 @@ namespace Haley.Models
     {
         public object ConcreteInstance { get; set; }
         public Func<object> InstanceCreator { get; private set; }
+        public bool IsLazyRegister { get; private set; }
         public bool SetInstanceCreator(Func<object> creator)
         {
-            if (InstanceCreator != null || creator == null) return false;
-            InstanceCreator = creator;
+            if (InstanceCreator != null) return false; // We should not overwrite an existing creator during runtime.
+            IsLazyRegister = true; //this is a lazy register call
+            InstanceCreator = creator; //this could be null. If null, we try to resolve on demand.
             return true;
         }
         public RegisterMode Mode { get; }
@@ -33,6 +35,7 @@ namespace Haley.Models
         public RegisterLoad():base(null,null,null)
         {
             Mode = RegisterMode.ContainerSingleton;
+            IsLazyRegister = false; //default
         }
     }
 }

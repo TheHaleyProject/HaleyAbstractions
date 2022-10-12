@@ -5,7 +5,7 @@ namespace Haley.Abstractions
     public interface INotification
     {
         #region Properties
-        object ContainerViewModel { get; }
+        object ViewModel { get; }
         string Id { get;  }
         DisplayType Type { get; set; }
         string Message { get; set; }
@@ -14,7 +14,6 @@ namespace Haley.Abstractions
         string UserInput { get; set; }
         bool? DialogResult { get; set; }
         string AppName { get; set; }
-
         bool AutoClose { get; set; }
         int CountDown { get; set; }
         double GlowRadius { get; set; }

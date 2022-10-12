@@ -8,5 +8,6 @@ namespace Haley.Abstractions
         object ConcreteInstance { get; }
         RegisterMode Mode { get; }
         Func<object> InstanceCreator { get; }
+        bool IsLazyRegister { get; }
     }
 }

@@ -9,11 +9,13 @@ namespace Haley.Abstractions
 {
     public interface IConfigManager
     {
+        ExceptionHandling ExceptionMode { get; }
         bool UseCustomProcessors { get; set; }
         bool UseCustomSerializers { get; set; }
         bool ReloadConfigOnHandlerUpdate { get; set; }
         string FileExtension { get; set; }
 
+        IConfigManager WithExceptionHandling(ExceptionHandling exceptionHandling);
         IConfig GetConfig(string key);
         Task<bool> UpdateConfig(string key, IConfig config);
         IEnumerable<IConfig> GetAllConfig();

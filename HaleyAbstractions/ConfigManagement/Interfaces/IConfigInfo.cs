@@ -20,6 +20,5 @@ namespace Haley.Abstractions
         /// Give relative or absolute path (For relative, ConfigManager base path will be used.)
         /// </summary>
         string StorageDirectory { get; } 
-        
     }
 }

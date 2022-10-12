@@ -42,6 +42,7 @@ namespace Haley.Abstractions
         bool Register<TContract, TConcrete>(RegisterMode mode = RegisterMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
         bool Register<TContract, TConcrete>(TConcrete instance, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
         bool Register<TContract, TConcrete>(IMappingProvider dependencyProvider, MappingLevel mapping_level, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
+
         #endregion
 
         #region RegisterWithKey Methods
@@ -54,10 +55,10 @@ namespace Haley.Abstractions
         #endregion
 
         #region LazyRegister
-        bool DelegateRegister<TConcrete>(Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class;
-        bool DelegateRegister<TContract, TConcrete>(Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
-        bool DelegateRegister<TConcrete>(string priority_key, Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class;
-        bool DelegateRegister<TContract, TConcrete>(string priority_key, Func<TConcrete> del, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
+        bool LazyRegister<TConcrete>(Func<TConcrete> del = null, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class;
+        bool LazyRegister<TContract, TConcrete>(Func<TConcrete> del =null, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
+        bool LazyRegisterWithKey<TConcrete>(string priority_key, Func<TConcrete> del = null, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class;
+        bool LazyRegisterWithKey<TContract, TConcrete>(string priority_key, Func<TConcrete> del =null, SingletonMode mode = SingletonMode.ContainerSingleton) where TConcrete : class, TContract;  //TImplementation should either implement or inherit from TContract
         #endregion
 
         bool RegisterLoad(RegisterLoad load);  //Direct register
