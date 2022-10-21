@@ -20,17 +20,5 @@ namespace Haley.Enums
         /// New instance created on each request (on source container)
         /// </summary>
         Transient,
-        #region Obsolete
-        /// <summary>
-        /// Remains the same across the source container. If a child container tries to resolve, it will be first resolved as a transient and stored in the child container as a singleton.
-        /// </summary>
-        [Obsolete("Replaced by : ContainerSingleton (Singleton with in a container)", true)]
-        Singleton,
-        /// <summary>
-        /// Irrespective of the user requesting a transient, the result will always be a singleton.
-        /// </summary>
-        [Obsolete("Replaced by: UniversalSingleton (Singleton across all containers)", true)]
-        ForcedSingleton
-        #endregion
     }
 }

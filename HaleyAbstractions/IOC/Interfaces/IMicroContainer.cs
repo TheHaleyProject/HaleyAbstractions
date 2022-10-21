@@ -7,13 +7,16 @@ using Haley.Models;
 
 namespace Haley.Abstractions
 {
-    public interface IBaseContainer : IBaseServiceProvider,IDisposable
+    public interface IMicroContainer : IBaseServiceProvider,IDisposable
     {
-        event EventHandler<IBaseContainer> ChildCreated;
+        event EventHandler<IMicroContainer> ChildContainerCreated;
         event EventHandler<string> ContainerDisposed;
         bool ResolveOnlyOnDemand { get; }
         void SetResolveOnlyOnDemandMode(bool flag);
         ExceptionHandling ErrorHandling { get; set; }
+        
+        IMicroContainer Parent { get; }
+        IMicroContainer Root { get; }
         bool TrySetResolutionOverride(Func<ResolveLoad, string, object> overrideCallback); //Can be set only once.
         /// <summary>
         /// Create a child container
@@ -21,14 +24,18 @@ namespace Haley.Abstractions
         /// <param name="name"></param>
         /// <param name="ignoreParents">Will not ignore the UniversalSingleton Resolutions</param>
         /// <returns></returns>
-        IBaseContainer CreateChildContainer(string name = null,bool stopCheckingParents = false);
+        IMicroContainer CreateChild(Guid id , string name,bool ignore_parentcontainer);
+        IMicroContainer CreateChild(Guid id = default(Guid), bool ignore_parentcontainer = false);
+        IMicroContainer CreateChild(string name,bool ignore_parentcontainer = false);
+        IMicroContainer CreateChild();
+        IMicroContainer this[string id] { get; }
 
         /// <summary>
         /// Gets the top level child container
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        IBaseContainer GetChildContainer(string id);
+        IMicroContainer GetChild(string id,bool search_all_children = false);
         #region Validation Methods
         (bool status, string message,IRegisterLoad load) CheckIfRegistered(Type contract_type,string priority_key,bool checkInParents = false);
         (bool status, string message, IRegisterLoad load) CheckIfRegistered<TContract>(string priority_key, bool checkInParents = false);

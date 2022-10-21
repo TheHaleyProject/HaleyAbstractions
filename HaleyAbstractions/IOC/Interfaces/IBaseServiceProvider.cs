@@ -16,7 +16,7 @@ namespace Haley.Abstractions
         /// <summary>
         /// Doesn't work for UniversalSingleton.
         /// </summary>
-        bool StopCheckingParents { get; }
+        bool IgnoreParentContainer { get; }
         #region Resolve Methods
         T Resolve<T>(ResolveMode mode = ResolveMode.AsRegistered);
         T Resolve<T>(string priority_key, ResolveMode mode = ResolveMode.AsRegistered);

@@ -23,7 +23,9 @@ namespace Haley.Abstractions
         bool TryRegister(string key, Type configurationType, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
         bool TryUpdateHandler(string key, IConfigHandler handler);
         void SaveAll();
-        bool Save(string key);
+        bool Save(string key); 
+        void DeletaAllFiles();
+        bool DeleteFile(string key);
         void SetBasePath(string base_path); //If not provided, it gets stored in the ex
         string GetBasePath();
         string GetSavePath(IConfigInfo info);
