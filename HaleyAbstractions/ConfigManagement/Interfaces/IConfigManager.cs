@@ -19,8 +19,15 @@ namespace Haley.Abstractions
         IConfig GetConfig(string key);
         Task<bool> UpdateConfig(string key, IConfig config);
         IEnumerable<IConfig> GetAllConfig();
-        bool TryRegister(IConfigInfo info, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
-        bool TryRegister(string key, Type configurationType, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
+        bool TryRegister(IConfigInfo info, IConfig data, IConfigHandler handler, bool updateHandlerOnFailure);
+        bool TryRegister(string key, IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
+        bool TryRegister(string key, IConfig data, IConfigHandler handler, bool updateHandlerOnFailure = false);
+        bool TryRegister(IConfig data, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false);
+        bool TryRegister(IConfig data, IConfigHandler handler,  bool updateHandlerOnFailure = false);
+        bool TryRegister<ConfigType>(string key, IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false) where ConfigType:IConfig;
+        bool TryRegister<ConfigType>(string key, IConfigHandler handler,  bool updateHandlerOnFailure = false) where ConfigType : IConfig;
+        bool TryRegister<ConfigType>(IConfigHandler handler, out IConfigInfo resultInfo, bool updateHandlerOnFailure = false) where ConfigType : IConfig;
+        bool TryRegister<ConfigType>(IConfigHandler handler, bool updateHandlerOnFailure = false) where ConfigType : IConfig;
         bool TryUpdateHandler(string key, IConfigHandler handler);
         void SaveAll();
         bool Save(string key); 
