@@ -10,9 +10,10 @@ using System.Reflection;
 
 namespace Haley.Models
 {
-    public class ConfigBase : IConfig
-    {
+    public class ConfigBase : IConfig {
         public string Id { get; }
+
+        public string FileName { get; set; }
 
         public ConfigBase()
         {
