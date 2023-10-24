@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface IConfigProvider<T> where T : IConfig
+    public interface IConfigProvider<T> where T : class,IConfig,new()
     {
         Guid UniqueId { get; set; }
 
@@ -16,6 +16,8 @@ namespace Haley.Abstractions
         /// The configuration is about to be saved. return the updated config to be saved.
         /// </summary>
         /// <returns></returns>
-        Task<T> OnConfigSaving();
+        Task<T> FetchConfigToSave();
+
+        Task<T> PrepareDefaultConfig(bool test = false);
     }
 }

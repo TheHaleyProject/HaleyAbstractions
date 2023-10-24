@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    [Obsolete("Please replace this interface with IConfigService")]
+    [Obsolete("Please replace this interface with IConfigService", true)]
     public interface IConfigManager {
     }
 }

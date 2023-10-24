@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface IConfigConsumer<T> where T: IConfig
+    public interface IConfigConsumer<T> where T : class, IConfig
     {
         Guid UniqueId { get; set; }
-        Task<bool> OnConfigLoaded(T config);
+        Task<bool> OnConfigUpdated(T config);
     }
 }
