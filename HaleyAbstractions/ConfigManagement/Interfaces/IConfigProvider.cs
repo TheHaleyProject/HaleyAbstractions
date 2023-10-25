@@ -18,7 +18,6 @@ namespace Haley.Abstractions
         /// <returns></returns>
         Task<T> FetchConfigToSave();
 
-        Task<T> PrepareDefaultConfig(bool test = false);
-        Task EmptyTest();
+        void DummyMethod();
     }
 }

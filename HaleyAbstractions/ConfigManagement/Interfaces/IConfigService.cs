@@ -29,11 +29,8 @@ namespace Haley.Abstractions
 
         #region Consumer
         bool TryRegisterConsumer<T>(IConfigConsumer<T> consumer, bool silentRegistration = true) where T : class, IConfig,new();
-        bool TryRegisterConsumer<T>(Action<T> action_consumer, out int id, bool silentRegistration = true) where T :class, IConfig,new();
         bool TryRegisterConsumers<T>(List<IConfigConsumer<T>> consumers, bool silentRegistration = true) where T : class, IConfig,new();
-
         bool TryRemoveConsumer<T>(IConfigConsumer<T> consumer) where T :class, IConfig,new();
-        bool TryRemoveConsumer<T>(int actionId) where T: IConfig;
         bool TryRemoveConsumers<T>(List<IConfigConsumer<T>> consumers) where T :class, IConfig,new();
         #endregion
 
@@ -57,9 +54,9 @@ namespace Haley.Abstractions
         /// <param name="key"></param>
         Task ResetConfig<T>() where T : class, IConfig,new();
 
-        bool Save<T>() where T : class, IConfig,new();
+        Task<bool> Save<T>() where T : class, IConfig,new();
 
-        void SaveAll();
+        Task SaveAll();
 
         Task<bool> UpdateConfig<T>(T config) where T : class, IConfig,new(); //Based on the new data, update the information
         #endregion
