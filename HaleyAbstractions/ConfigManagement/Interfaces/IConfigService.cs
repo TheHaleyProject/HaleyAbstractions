@@ -13,7 +13,6 @@ namespace Haley.Abstractions
         ExceptionHandling ExceptionMode { get; }
         string FileExtension { get; set; }
         bool SaveWithFullName { get; set; }
-        bool SendConfigCloneToConsumers { get; set; }
         bool UseCustomProcessors { get; set; } //Flag to pre process (may be to encrypt decrypt the data)
         bool UseCustomSerializers { get; set; } //The way how the object can be serialized and deserialized
         #endregion
@@ -40,12 +39,10 @@ namespace Haley.Abstractions
         #endregion
 
         #region Config
-        IEnumerable<IConfig> GetAllConfig();
+        IEnumerable<IConfig> GetAllConfig(bool copy = true);
 
-        T GetConfig<T>() where T : class, IConfig,new();
-        T GetConfigCopy<T>() where T : class, IConfig,new();
-        Task LoadAllConfig();
-
+        T GetConfig<T>(bool copy = true) where T : class, IConfig,new(); //return a copy
+        Task LoadAllConfig(bool loadParallely = true);
         Task LoadConfig<T>() where T : class, IConfig,new();
 
         /// <summary>
@@ -53,16 +50,16 @@ namespace Haley.Abstractions
         /// </summary>
         /// <param name="key"></param>
         Task ResetConfig<T>() where T : class, IConfig,new();
+        Task ResetAllConfig();
 
-        Task<bool> Save<T>() where T : class, IConfig,new();
+        Task<bool> Save<T>(bool notifyConsumers = true,bool writeToDirectory = true, bool askProvider = true) where T : class, IConfig,new();
+        Task SaveAll(bool notifyConsumers = true,bool writeToDirectory = true, bool askProvider = true);
 
-        Task SaveAll();
-
-        Task<bool> UpdateConfig<T>(T config) where T : class, IConfig,new(); //Based on the new data, update the information
+        Task<bool> UpdateConfig<T>(T config,bool notifyConsumers = false) where T : class, IConfig,new(); //Based on the new data, update the information
         #endregion
 
         #region General Calls
-        void DeletaAllFiles();
+        void DeleteAllFiles();
 
         bool DeleteFile<T>() where T : class, IConfig,new();
 
@@ -75,7 +72,7 @@ namespace Haley.Abstractions
         //If not provided, it gets stored in the ex
         void SetProcessors(Func<Type, string, string> presave_processor, Func<Type, string, string> postload_processor);
 
-        void SetSerializer(Func<IConfig, string> serializer, Func<string, IConfig> deserializer);
+        void SetSerializer(Func<Type,IConfig, string> serializer, Func<Type,string, IConfig> deserializer);
 
         IConfigService SetStorageDirectory<T>(string storageDirectory) where T : class, IConfig,new();
 
