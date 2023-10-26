@@ -16,7 +16,7 @@ namespace Haley.Abstractions
         /// The configuration is about to be saved. return the updated config to be saved.
         /// </summary>
         /// <returns></returns>
-        Task<T> FetchConfigToSave();
+        Task<T> GetLatestConfig();
 
         //void DummyMethod();
     }

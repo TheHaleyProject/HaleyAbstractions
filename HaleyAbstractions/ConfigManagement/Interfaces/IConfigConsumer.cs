@@ -9,6 +9,6 @@ namespace Haley.Abstractions
     public interface IConfigConsumer<T> where T : class, IConfig
     {
         Guid UniqueId { get; set; }
-        Task<bool> OnConfigUpdated(T config);
+        Task<bool> OnConfigChanged(T config);
     }
 }

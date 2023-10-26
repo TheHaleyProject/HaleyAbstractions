@@ -9,6 +9,11 @@ namespace Haley.Abstractions
 {
     public interface IConfigService
     {
+        #region Events
+        EventHandler<Type> ConfigLoaded { get; set; }
+        EventHandler<Type> ConfigSaved { get; set; }
+        #endregion
+
         #region Properties
         ExceptionHandling ExceptionMode { get; }
         string FileExtension { get; set; }
@@ -40,7 +45,6 @@ namespace Haley.Abstractions
 
         #region Config
         IEnumerable<IConfig> GetAllConfig(bool copy = true);
-
         T GetConfig<T>(bool copy = true) where T : class, IConfig,new(); //return a copy
         Task LoadAllConfig(bool loadParallely = true);
         Task LoadConfig<T>() where T : class, IConfig,new();
