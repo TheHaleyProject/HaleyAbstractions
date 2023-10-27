@@ -46,7 +46,10 @@ namespace Haley.Models
 
         public virtual void Execute(object parameter)
         {
-            _action?.Invoke((T)parameter);
+            try {
+                _action?.Invoke((T)parameter);
+            } catch (Exception) {
+            }
         }
 
         public DelegateCommand(Action<T> ActionMethod, Func<T, bool> ValidationFunction)

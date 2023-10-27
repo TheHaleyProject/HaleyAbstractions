@@ -46,23 +46,25 @@ namespace Haley.Abstractions
         #region Config
         IEnumerable<IConfig> GetAllConfig(bool copy = true);
         T GetConfig<T>(bool copy = true) where T : class, IConfig,new(); //return a copy
-        Task LoadAllConfig(bool loadParallely = true);
-        Task LoadConfig<T>() where T : class, IConfig,new();
+        Task LoadAllConfig(bool notifyConsumers = true, bool loadParallely = true);
+        Task LoadConfig<T>(bool notifyConsumers = true) where T : class, IConfig,new(); //need to inform consumers for sure.
 
         /// <summary>
         /// Resets to default config.
         /// </summary>
         /// <param name="key"></param>
-        Task ResetConfig<T>() where T : class, IConfig,new();
-        Task ResetAllConfig();
+        Task ResetConfig<T>(bool notifyConsumers = true) where T : class, IConfig,new();
+        Task ResetAllConfig(bool notifyConsumers = true);
 
         Task<bool> Save<T>(bool notifyConsumers = true,bool writeToDirectory = true, bool askProvider = true) where T : class, IConfig,new();
         Task SaveAll(bool notifyConsumers = true,bool writeToDirectory = true, bool askProvider = true);
 
         Task<bool> UpdateConfig<T>(T config,bool notifyConsumers = false) where T : class, IConfig,new(); //Based on the new data, update the information
+        Task NotifyConsumers<T>() where T: class, IConfig,new();
+        Task NotifyAllConsumers();
         #endregion
 
-        #region General Calls
+            #region General Calls
         void DeleteAllFiles();
 
         bool DeleteFile<T>() where T : class, IConfig,new();
