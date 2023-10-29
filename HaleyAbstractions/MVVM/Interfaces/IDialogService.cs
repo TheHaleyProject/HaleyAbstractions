@@ -1,5 +1,7 @@
 ﻿using Haley.Enums;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Haley.Abstractions
 {
@@ -20,5 +22,17 @@ namespace Haley.Abstractions
         //For fetching views from Container
         INotification ShowContainerView(string title, object key, object InputViewModel = null, ResolveMode mode = ResolveMode.AsRegistered,bool blurOtherWindows = false, IControlContainer container = null);
         INotification ShowContainerView<ViewOrVMType>(string title, object InputViewModel = null, ResolveMode mode = ResolveMode.AsRegistered, bool blurOtherWindows = false, IControlContainer container = null) where ViewOrVMType : class;
+
+        #region Theme management
+        bool SubscribeThemeService(IThemeService service);
+        bool UnsubscribeThemeService();
+        void ClearCurrentTheme();
+        void RebaseTheme(bool defaultTheme = false);
+        void RegisterThemeKey(DialogServiceProp propname, object resourceKey);
+        void UnregisterThemeKey(DialogServiceProp propname);
+        void RegisterThemeKeys(Dictionary<DialogServiceProp, object> keydictionary);
+        void UnregisterThemeKeys(List<DialogServiceProp> propList);
+        void UnregisterAllTheme();
+        #endregion
     }
 }
