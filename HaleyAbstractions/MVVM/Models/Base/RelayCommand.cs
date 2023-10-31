@@ -8,24 +8,24 @@ using System.Windows;
 
 namespace Haley.Models
 {
-   public class DelegateCommand : DelegateCommand<object>
+   public class RelayCommand : RelayCommand<object>
     {
-        public DelegateCommand(Action ActionMethod, Func<bool> ValidationFunction) :base((p)=>ActionMethod(), (p)=> ValidationFunction())
+        public RelayCommand(Action ActionMethod, Func<bool> ValidationFunction) :base((p)=>ActionMethod(), (p)=> ValidationFunction())
         {
             //For actions without the need for any parameters. 
         }
 
-        public DelegateCommand(Action ActionMethod) : base((p)=>ActionMethod())
+        public RelayCommand(Action ActionMethod) : base((p)=>ActionMethod())
         {
         }
     }
 
     
-    public class DelegateCommand<T> : ICommand
+    public class RelayCommand<T> : ICommand
     {
         Action<T> _action; //actual action to handle
         Func<T, bool> _validation; // validate to check if this command can be executed.
-        public event EventHandler CanExecuteChanged;
+        public virtual event EventHandler CanExecuteChanged;
 
         //public event EventHandler CanExecuteChanged
         //{
@@ -52,19 +52,19 @@ namespace Haley.Models
             }
         }
 
-        public DelegateCommand(Action<T> ActionMethod, Func<T, bool> ValidationFunction)
+        public RelayCommand(Action<T> ActionMethod, Func<T, bool> ValidationFunction)
         {
             _action = ActionMethod;
             _validation = ValidationFunction;
         }
 
-        public DelegateCommand(Action<T> ActionMethod)
+        public RelayCommand(Action<T> ActionMethod)
         {
             _action = ActionMethod;
             _validation = null;
         }
 
-        public void RaiseCanExecuteChanged()
+        public virtual void RaiseCanExecuteChanged()
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty); //When user decides to manually invoke and let know that can execute has been changed.
         }
