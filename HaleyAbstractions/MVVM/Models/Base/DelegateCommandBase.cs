@@ -1,35 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel;
 using System.Windows.Input;
-using System.Reflection;
-using System.Windows;
 
-namespace Haley.Models
-{
-   public class DelegateCommandBase : DelegateCommandBase<object>
-    {
-        public DelegateCommandBase(Action ActionMethod, Func<bool> ValidationFunction) :base((p)=>ActionMethod(), (p)=> ValidationFunction())
-        {
+namespace Haley.Models {
+    public class DelegateCommandBase : DelegateCommandBase<object> {
+        public DelegateCommandBase(Action ActionMethod, Func<bool> ValidationFunction) : base((p) => ActionMethod(), (p) => ValidationFunction()) {
             //For actions without the need for any parameters. 
         }
 
-        public DelegateCommandBase(Action ActionMethod) : base((p)=>ActionMethod())
-        {
+        public DelegateCommandBase(Action ActionMethod) : base((p) => ActionMethod()) {
         }
     }
 
-    
-    public class DelegateCommandBase<T> : ICommand
-    {
+
+    public class DelegateCommandBase<T> : ICommand {
         //public string ID { get; }
         Action<T> _action; //actual action to handle
         Func<T, bool> _validation; // validate to check if this command can be executed.
         //public virtual event EventHandler CanExecuteChanged;
 
-        public virtual bool CanExecute(object parameter)
-        {
+        public virtual bool CanExecute(object parameter) {
             try {
                 if (_validation == null) return true;
                 T _param = (parameter != null) ? (T)parameter : default(T);
@@ -39,24 +28,21 @@ namespace Haley.Models
             }
         }
 
-        public virtual void Execute(object parameter)
-        {
+        public virtual void Execute(object parameter) {
             try {
                 _action?.Invoke((T)parameter);
             } catch (Exception) {
             }
         }
 
-        public DelegateCommandBase(Action<T> ActionMethod, Func<T, bool> ValidationFunction)
-        {
+        public DelegateCommandBase(Action<T> ActionMethod, Func<T, bool> ValidationFunction) {
             _action = ActionMethod;
             _validation = ValidationFunction;
             //ID = Guid.NewGuid().ToString();
         }
 
-        public DelegateCommandBase(Action<T> ActionMethod) : this (ActionMethod, null)
-        {
-            
+        public DelegateCommandBase(Action<T> ActionMethod) : this(ActionMethod, null) {
+
         }
 
         EventHandler _internalCanExecute;
@@ -66,11 +52,10 @@ namespace Haley.Models
             remove { _internalCanExecute -= value; }
         }
 
-        [Obsolete("Replace with Invalidate()",true)]
+        [Obsolete("Replace with Invalidate()", true)]
         public void RaiseCanExecuteChanged() { }
 
-        public virtual void Invalidate()
-        {
+        public virtual void Invalidate() {
             var handler = this._internalCanExecute;
             if (handler == null) return;
             handler(this, EventArgs.Empty);

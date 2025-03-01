@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace Haley.Abstractions
-{
-    public interface ISubscriber
-    {
+namespace Haley.Abstractions {
+    public interface ISubscriber {
         string Id { get; set; }
         Type DeclaringType { get; }
         string GroupId { get; }

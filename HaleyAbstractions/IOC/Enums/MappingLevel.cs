@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-
-namespace Haley.Enums
-{
-    public enum MappingLevel
-    {
+﻿namespace Haley.Enums {
+    public enum MappingLevel {
         None,
         Current,
         CurrentWithDependencies,

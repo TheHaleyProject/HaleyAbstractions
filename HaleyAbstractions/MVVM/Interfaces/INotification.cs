@@ -1,12 +1,10 @@
 ﻿using Haley.Enums;
 
-namespace Haley.Abstractions
-{
-    public interface INotification
-    {
+namespace Haley.Abstractions {
+    public interface INotification {
         #region Properties
         object ViewModel { get; }
-        string Id { get;  }
+        string Id { get; }
         DisplayType Type { get; set; }
         string Message { get; set; }
         NotificationIcon NotificationIcon { get; set; }

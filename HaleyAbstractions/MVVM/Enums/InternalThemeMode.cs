@@ -1,12 +1,7 @@
-﻿using System;
-using System.Linq;
-
-namespace Haley.Enums
-{
-    public enum InternalThemeMode
-    {
-       Normal,
-       Dark,
-       Mild
+﻿namespace Haley.Enums {
+    public enum InternalThemeMode {
+        Normal,
+        Dark,
+        Mild
     }
 }

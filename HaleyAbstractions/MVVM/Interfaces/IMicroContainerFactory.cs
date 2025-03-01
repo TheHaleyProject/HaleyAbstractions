@@ -1,14 +1,12 @@
 ﻿using System;
 
-namespace Haley.Abstractions
-{
-    public interface IMicroContainerFactory :IContainerFactory
-    {
+namespace Haley.Abstractions {
+    public interface IMicroContainerFactory : IContainerFactory {
         bool IsDisposed { get; }
         event EventHandler<IMicroContainerFactory> ChildFactoryCreated;
         event EventHandler<string> FactoryDisposed;
-        IMicroContainerFactory Parent { get;  }
-        IMicroContainerFactory Root { get;  }
+        IMicroContainerFactory Parent { get; }
+        IMicroContainerFactory Root { get; }
         new IBaseServiceProvider Services { get; }
         IMicroContainer Container { get; }
         IMicroContainerFactory GetChild(string id, bool search_all_children = false);

@@ -1,10 +1,7 @@
 ﻿using Haley.Enums;
-using System;
 
-namespace Haley.Abstractions
-{
-    public interface IWindowContainer: IUIContainerBase<IHaleyVM>
-    {
+namespace Haley.Abstractions {
+    public interface IWindowContainer : IUIContainerBase<IHaleyVM> {
         #region ShowDialog Methods
         bool? ShowDialog<ViewType>(object InputViewModel, ResolveMode resolve_mode = ResolveMode.AsRegistered) where ViewType : class;
         bool? ShowDialog<ViewOrVMType>(ResolveMode resolve_mode = ResolveMode.AsRegistered) where ViewOrVMType : class;

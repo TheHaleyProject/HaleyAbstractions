@@ -1,14 +1,8 @@
-﻿using Haley.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace Haley.Abstractions
-{
-    public interface IConfigProvider<T> where T : class,IConfig,new()
-    {
+namespace Haley.Abstractions {
+    public interface IConfigProvider<T> where T : class, IConfig, new() {
         Guid UniqueId { get; set; }
 
         Task<T> PrepareDefaultConfig();

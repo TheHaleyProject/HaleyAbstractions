@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
-namespace Haley.Enums
-{
-    public enum RegisterMode 
-    {
+﻿namespace Haley.Enums {
+    public enum RegisterMode {
         /// <summary>
         /// Object state is singleton with in same container. (This can still be resolved as Transient if user needs)
         /// </summary>

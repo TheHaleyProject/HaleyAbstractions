@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Haley.Enums;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using Haley.Enums;
 
-namespace Haley.Models
-{
-    public struct GroupChangeData
-    {
+namespace Haley.Models {
+    public struct GroupChangeData {
         public string GroupId { get; set; }
         public bool AddCopyAtRoot { get; set; }
         public object Themekey { get; set; }

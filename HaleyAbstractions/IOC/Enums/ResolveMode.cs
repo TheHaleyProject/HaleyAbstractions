@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-
-namespace Haley.Enums
-{
-    public enum ResolveMode
-    {
+﻿namespace Haley.Enums {
+    public enum ResolveMode {
         AsRegistered,
         Transient
     }

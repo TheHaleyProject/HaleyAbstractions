@@ -1,14 +1,11 @@
 ﻿using Haley.Enums;
+using Haley.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Reflection;
-using Haley.Models;
 
-namespace Haley.Abstractions
-{
-    public interface IThemeService
-    {
+namespace Haley.Abstractions {
+    public interface IThemeService {
 
         #region Properties
         /// <summary>

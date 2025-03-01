@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-
-namespace Haley.Enums
-{
-    public enum ThemeReplaceMode
-    {
+﻿namespace Haley.Enums {
+    public enum ThemeReplaceMode {
         /// <summary>
         /// Searches each of the resource dictionary to find a matching theme and replaces it. If a root's merged dictionary contains a match, it will also be replaced.
         /// </summary>

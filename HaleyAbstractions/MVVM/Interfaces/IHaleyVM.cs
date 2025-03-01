@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using Haley.Events;
+﻿using Haley.Events;
+using System;
 
-namespace Haley.Abstractions
-{
-        public interface IHaleyVM 
-        {
-            event EventHandler<FrameClosingEventArgs> ViewModelClosed; 
+namespace Haley.Abstractions {
+    public interface IHaleyVM {
+        event EventHandler<FrameClosingEventArgs> ViewModelClosed;
 
-            void OnViewLoaded(object sender);
-        }
+        void OnViewLoaded(object sender);
+    }
 }

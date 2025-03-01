@@ -1,14 +1,10 @@
-﻿using System;
-using System.Linq;
-
-namespace Haley.Enums
-{
+﻿namespace Haley.Enums {
     public enum DialogServiceProp {
-      Background,
-      Foreground,
-      AccentColor,
-      AccentForeground,
-      ToastBackground,
-      ToastForeground
+        Background,
+        Foreground,
+        AccentColor,
+        AccentForeground,
+        ToastBackground,
+        ToastForeground
     }
 }

@@ -2,21 +2,19 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace Haley.Abstractions
-{
-    public interface IMappingProvider
-    {
+namespace Haley.Abstractions {
+    public interface IMappingProvider {
         //Readonly dictionary
         ConcurrentDictionary<string, (object concrete_instance, InjectionTarget _target)> _mappings { get; }
 
         #region Add
-        bool Add<TConcrete>(string contract_name, TConcrete concrete_instance,Type contract_parent = null , InjectionTarget target = InjectionTarget.All);
-        bool Add<TContract,TConcrete>(TConcrete concrete_instance, Type contract_parent = null ,InjectionTarget target = InjectionTarget.All) where TConcrete:TContract;
+        bool Add<TConcrete>(string contract_name, TConcrete concrete_instance, Type contract_parent = null, InjectionTarget target = InjectionTarget.All);
+        bool Add<TContract, TConcrete>(TConcrete concrete_instance, Type contract_parent = null, InjectionTarget target = InjectionTarget.All) where TConcrete : TContract;
         bool Add(string contract_name, object concrete_instance, Type contract_type = null, Type contract_parent = null, InjectionTarget target = InjectionTarget.All);
         #endregion
 
         #region Remove
-        bool Remove(string contract_name, Type concrete_type =null, Type contract_parent = null);
+        bool Remove(string contract_name, Type concrete_type = null, Type contract_parent = null);
         bool Remove<T>(Type contract_parent = null);
         bool Remove(Type concrete_type, Type contract_parent = null);
         #endregion
