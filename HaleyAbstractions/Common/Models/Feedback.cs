@@ -6,7 +6,7 @@ namespace Haley.Models {
         public string Message { get; set; }
         public object Result { get; set; }
         public override string ToString() {
-            return $@"{Status} : {Message}";
+            return $@"{Status} : {Message} -- {Result}";
         }
         public Feedback() { }
         public Feedback(bool status, string message, object result) {

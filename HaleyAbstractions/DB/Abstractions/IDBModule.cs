@@ -11,7 +11,7 @@ namespace Haley.Abstractions {
     public interface IDBModule {
         Task<IFeedback> Execute(IModuleParameter parameter); //Just to enable storing in a common dictionary
         event EventHandler<DBModuleInitializedArgs> ModuleInitialized;
-        Task<bool> Initialize(); //will happen only once. //Why is this needed?
+        Task<IFeedback> Initialize(); //will happen only once. //Why is this needed?
         bool IsInitialized { get; }
         Type ParameterType { get; }
         IFeedback GetInvocationMethodName(Enum cmd);
