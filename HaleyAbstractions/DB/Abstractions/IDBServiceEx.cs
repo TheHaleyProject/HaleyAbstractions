@@ -12,7 +12,7 @@ namespace Haley.Abstractions {
            where M : class, IDBModule, new(); //Register a module
         Task<IFeedback> TryRegisterModule<M>(M module, Dictionary<string, object> seed)
             where M : class,IDBModule; //Register a module
-        Task<IFeedback> Execute<P>(P arg) where P : IModuleParameter;
+        Task<IFeedback> Execute<P>(Enum cmd,P arg) where P : IModuleParameter;
         IFeedback GetCommandStatus<P>(Enum cmd) where P : IModuleParameter;
     }
 }

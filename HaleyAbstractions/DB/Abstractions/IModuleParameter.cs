@@ -1,7 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Haley.Abstractions{
     public interface IModuleParameter {
-        Enum Command { get; set; }
+        Dictionary<string,string> QueryParams { get; }
     }
 }
