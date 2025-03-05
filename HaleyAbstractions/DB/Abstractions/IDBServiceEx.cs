@@ -14,5 +14,7 @@ namespace Haley.Abstractions {
             where M : class,IDBModule; //Register a module
         Task<IFeedback> Execute<P>(Enum cmd,P arg) where P : IModuleParameter;
         IFeedback GetCommandStatus<P>(Enum cmd) where P : IModuleParameter;
+        void SetDefaultAdapterKey(string adapterKey);
+        void SetDefaultAdapterKey<P>(string adapterKey) where P : IModuleParameter;
     }
 }
