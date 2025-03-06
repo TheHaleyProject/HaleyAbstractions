@@ -11,6 +11,6 @@ namespace Haley.Abstractions
         Task<DataSet> ExecuteReader(IDBInput input, params (string key, object value)[] parameters);
         Task<object> ExecuteNonQuery(IDBInput input, params (string key, object value)[] parameters);
         Task<object> ExecuteScalar(IDBInput input, params (string key, object value)[] parameters);
-        Task<object> ExecuteInternal(IDBInput input, Func<C, Task<object>> processor, params (string key, object value)[] parameters);
+        Task<object> ExecuteInternal(IDBInput input, Func<DbCommand, Task<object>> processor, params (string key, object value)[] parameters);
     }
 }
