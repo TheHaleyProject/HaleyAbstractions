@@ -17,6 +17,7 @@ namespace Haley.Abstractions {
         IDBService Add(IDBAdapterInfo entry, bool replace = true);
         IDBService UpdateAdapter();
         IDBService Configure();
-        string GetSchemaName(string dba_key);
+        IDBAdapterEx CreateAdapter(string adapterKey);
+        string GetSchemaName(string adapterKey);
     }
 }

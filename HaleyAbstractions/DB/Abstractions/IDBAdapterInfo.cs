@@ -1,7 +1,8 @@
 ﻿using Haley.Enums;
+using System;
 
 namespace Haley.Abstractions {
-    public interface IDBAdapterInfo {
+    public interface IDBAdapterInfo : ICloneable{
         string AdapterKey { get; set; }
         string ConnectionKey { get; set; }
         string ConnectionString { get; set; }
