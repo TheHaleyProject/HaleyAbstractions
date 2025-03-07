@@ -9,6 +9,7 @@ namespace Haley.Abstractions {
         //This should be stateless as every controller might call this concurrently.
         Guid Id { get; }
         Task<object> Read(IDBInput input, params (string key, object value)[] parameters);
+        Task<object> ReadScalar(IDBInput input, params (string key, object value)[] parameters);
         Task<object> NonQuery(IDBInput input,  params (string key, object value)[] parameters);
         void SetServiceUtil(IDBServiceUtil util);
         Task<object> GetFirst(object input, ResultFilter filter = ResultFilter.None);
