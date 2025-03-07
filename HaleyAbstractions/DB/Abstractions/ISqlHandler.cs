@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface ISqlHandler<C> where C: IDbCommand {
+    public interface ISqlHandler<C> : ISqlHandler
+        where C: IDbCommand {
+        Task<object> ExecuteInternal(IDBInput input, Func<IDbCommand, Task<object>> processor, params (string key, object value)[] parameters);
+    }
+
+    public interface ISqlHandler  {
         Task<DataSet> ExecuteReader(IDBInput input, params (string key, object value)[] parameters);
         Task<object> ExecuteNonQuery(IDBInput input, params (string key, object value)[] parameters);
         Task<object> ExecuteScalar(IDBInput input, params (string key, object value)[] parameters);
-        Task<object> ExecuteInternal(IDBInput input, Func<IDbCommand, Task<object>> processor, params (string key, object value)[] parameters);
     }
 }
