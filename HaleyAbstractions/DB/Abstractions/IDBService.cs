@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Haley.Abstractions {
-    public interface IDBService: IDictionary<string, IDBAdapter>, IDBCaller{
+    public interface IDBService: IDictionary<string, IDBAdapter>, IDBCrudHandler{
         //This should be stateless as every controller might call this concurrently.
         Guid Id { get; }
         void SetServiceUtil(IDBServiceUtil util);
@@ -14,7 +14,7 @@ namespace Haley.Abstractions {
         IDBService Add(IDBAdapterInfo entry, bool replace = true);
         IDBService UpdateAdapter();
         IDBService Configure();
-        IDBAdapterEx CreateAdapter(string adapterKey);
+        ITransactionHandler GetTransactionHandler(string adapterKey);
         string GetSchemaName(string adapterKey);
     }
 }

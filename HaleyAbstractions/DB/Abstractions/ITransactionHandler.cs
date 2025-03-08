@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface IDBAdapterEx : IDBAdapter, IDisposable {
-       
+    public interface ITransactionHandler : IDBAdapter, IDBTransaction {
+        
     }
 }

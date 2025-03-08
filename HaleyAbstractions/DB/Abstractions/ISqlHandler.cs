@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface ISqlHandler<C> : ISqlHandler
-        where C: IDbCommand {
+    public interface ISqlHandler :IDBCrudHandler, IDBTransaction {
+        bool TransactionMode { get; }
         Task<object> ExecuteInternal(IDBInput input, Func<IDbCommand, Task<object>> processor, params (string key, object value)[] parameters);
-    }
-
-    public interface ISqlHandler :IDBCaller {
-        
     }
 }
