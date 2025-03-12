@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface ITransactionHandler : IDBAdapter, IDBTransaction {
-        
+    public interface ITransactionHandler : IDBTransaction, IDBModuleExecution {
+        //Should be able to call modules, also directly call adapters, and most importantly based on transaction.
     }
 }
