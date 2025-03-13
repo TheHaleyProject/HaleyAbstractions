@@ -4,11 +4,10 @@ using System;
 
 namespace Haley.Abstractions
 {
-    public interface IDBInput
+    public interface IAdapterParameter : IParameterBase
     {
-        string DBAKey { get; set; }
         ResultFilter Filter { get; set; }
-        string Conn { get; set; }
+        //string Conn { get; set; }
         string Query { get; set; }
         ILogger Logger { get; set; }
         Func<string, object, bool> ParamHandler { get; set; }

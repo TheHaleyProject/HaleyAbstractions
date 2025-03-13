@@ -5,12 +5,9 @@ using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Haley.Abstractions {
-    public interface IDBCrudHandler {
-        Task<object> Read(IDBInput input, params (string key, object value)[] parameters);
-        Task<object> Read(string adapterkey,string query, params (string key, object value)[] parameters);
-        Task<object> Scalar(IDBInput input, params (string key, object value)[] parameters);
-        Task<object> Scalar(string adapterkey, string query, params (string key, object value)[] parameters);
-        Task<object> NonQuery(IDBInput input,  params (string key, object value)[] parameters);
-        Task<object> NonQuery(string adapterkey, string query, params (string key, object value)[] parameters);
+    public interface IDBCrudHandler  : IAdapterCrudHandler{
+        Task<object> Read(IParameterBase input,string query, params (string key, object value)[] parameters);
+        Task<object> Scalar(IParameterBase input, string query, params (string key, object value)[] parameters);
+        Task<object> NonQuery(IParameterBase input, string query, params (string key, object value)[] parameters);
     }
 }

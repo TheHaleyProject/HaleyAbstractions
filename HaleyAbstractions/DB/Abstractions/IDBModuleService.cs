@@ -12,7 +12,9 @@ namespace Haley.Abstractions {
            where M : class, IDBModule, new(); //Register a module
         Task<IFeedback> TryRegisterModule<M>(M module, Dictionary<string, object> seed)
             where M : class,IDBModule; //Register a module
+        IDBModule GetModule<P>() where P : IParameterBase;
+        string GetModuleKey<P>() where P : IParameterBase;
         void SetDefaultAdapterKey(string adapterKey);
-        void SetDefaultAdapterKey<P>(string adapterKey) where P : IModuleParameter;
+        void SetDefaultAdapterKey<P>(string adapterKey) where P : IParameterBase;
     }
 }
