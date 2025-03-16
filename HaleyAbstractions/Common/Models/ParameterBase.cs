@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace Haley.Models
 {
     public abstract class ParameterBase : IParameterBase {
-        ConcurrentDictionary<string, object> _parameters;
+        ConcurrentDictionary<string, object> _parameters = new ConcurrentDictionary<string, object>();
+        public IReadOnlyDictionary<string, object> Parameters => _parameters; //Return as readonly
         public string Key { get; set; }
         protected bool AddParameterInternal (string key, object value, bool replace = true) {
             if (string.IsNullOrWhiteSpace(key)) return false;
@@ -23,10 +24,6 @@ namespace Haley.Models
         }
         protected virtual void SetParametersInternal(Dictionary<string,object> parameters) {
             _parameters = new ConcurrentDictionary<string, object>(parameters);
-        }
-        public IReadOnlyDictionary<string, object> GetParameters() {
-            if (_parameters == null) _parameters = new ConcurrentDictionary<string, object>();
-            return (IReadOnlyDictionary<string,object>)_parameters;
         }
         public string Id { get; }
         public ParameterBase() : this(null) { }

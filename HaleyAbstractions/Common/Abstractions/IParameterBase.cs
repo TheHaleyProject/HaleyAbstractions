@@ -2,6 +2,6 @@
 
 namespace Haley.Abstractions{
     public interface IParameterBase : IIdentityBase {
-        IReadOnlyDictionary<string, object> GetParameters();
+        IReadOnlyDictionary<string, object> Parameters { get; }
     }
 }
