@@ -2,7 +2,7 @@
 using System;
 
 namespace Haley.Models {
-    public class KeyBase : IKeyBase, IEquatable<KeyBase> {
+    public class KeyBase : IIOCKeyBase, IEquatable<KeyBase> {
         public string id { get; }
         public string priority { get; }
         public Type contract_type { get; }

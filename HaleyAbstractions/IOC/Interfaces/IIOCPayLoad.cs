@@ -2,7 +2,7 @@
 using System;
 
 namespace Haley.Abstractions {
-    public interface IPayLoad {
+    public interface IIOCPayLoad {
         string PriorityKey { get; }
         Type ContractType { get; }
         Type ConcreteType { get; set; }

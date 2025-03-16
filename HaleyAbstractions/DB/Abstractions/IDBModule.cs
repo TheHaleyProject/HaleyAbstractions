@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 namespace Haley.Abstractions {
 
     public interface IDBModule<P> : IDBModule
-        where P : IParameterBase {
+        where P : IDBModuleInput {
     }
 
-    public interface IDBModule {
-        Task<IFeedback> Execute(Enum cmd); //Just to enable storing in a common dictionary
-        Task<IFeedback> Execute(Enum cmd, IParameterBase parameter); //Just to enable storing in a common dictionary
+    public interface IDBModule : IDBModuleExecution {
         event EventHandler<DBModuleInitializedArgs> ModuleInitialized;
         Task<IFeedback> Initialize(); //will happen only once. //Why is this needed?
         bool IsInitialized { get; }

@@ -3,7 +3,7 @@ using Haley.Enums;
 using System;
 
 namespace Haley.Models {
-    public sealed class RegisterLoad : LoadBase, IRegisterLoad {
+    public sealed class RegisterLoad : LoadBase, IIOCRegisterLoad {
         public object ConcreteInstance { get; set; }
         public Func<object> InstanceCreator { get; private set; }
         public bool IsLazyRegister { get; private set; }
@@ -13,20 +13,20 @@ namespace Haley.Models {
             InstanceCreator = creator; //this could be null. If null, we try to resolve on demand.
             return true;
         }
-        public RegisterMode Mode { get; }
-        public ResolveLoad Convert(string contract_name, Type contract_parent, ResolveMode mode) {
+        public IOCRegisterMode Mode { get; }
+        public ResolveLoad Convert(string contract_name, Type contract_parent, IOCResolveMode mode) {
             ResolveLoad _load = new ResolveLoad(mode, this.PriorityKey, contract_name, this.ContractType, contract_parent, this.ConcreteType, this.TransientLevel);
             return _load;
         }
 
         [HaleyIgnore]
-        public RegisterLoad(RegisterMode mode, string priority_key, Type contract_type, Type concrete_type, object concrete_instance, TransientCreationLevel transient_level = TransientCreationLevel.None) : base(priority_key, contract_type, concrete_type, transient_level) {
+        public RegisterLoad(IOCRegisterMode mode, string priority_key, Type contract_type, Type concrete_type, object concrete_instance, TransientCreationLevel transient_level = TransientCreationLevel.None) : base(priority_key, contract_type, concrete_type, transient_level) {
             ConcreteInstance = concrete_instance;
             Mode = mode;
         }
         [HaleyIgnore]
         public RegisterLoad() : base(null, null, null) {
-            Mode = RegisterMode.ContainerSingleton;
+            Mode = IOCRegisterMode.ContainerSingleton;
             IsLazyRegister = false; //default
         }
     }

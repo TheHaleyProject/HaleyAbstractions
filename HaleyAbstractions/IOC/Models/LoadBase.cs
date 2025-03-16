@@ -3,7 +3,7 @@ using Haley.Enums;
 using System;
 
 namespace Haley.Models {
-    public class LoadBase : IPayLoad {
+    public class LoadBase : IIOCPayLoad {
         public string PriorityKey { get; }
         public Type ContractType { get; }
         public Type ConcreteType { get; set; }

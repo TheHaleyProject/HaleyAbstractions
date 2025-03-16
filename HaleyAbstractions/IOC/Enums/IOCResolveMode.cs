@@ -1,5 +1,5 @@
 ﻿namespace Haley.Enums {
-    public enum ResolveMode {
+    public enum IOCResolveMode {
         AsRegistered,
         Transient
     }

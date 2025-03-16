@@ -6,10 +6,10 @@ namespace Haley.Models {
         public Type ViewModelType { get; set; }
         public Type ViewType { get; set; }
         public bool KeyDependent { get; set; }
-        public RegisterMode Mode { get; set; }
+        public IOCRegisterMode Mode { get; set; }
 
         [HaleyIgnore]
-        public UIGroupInfo(Type vm_type, Type view_type, bool groupByKey, RegisterMode mode) {
+        public UIGroupInfo(Type vm_type, Type view_type, bool groupByKey, IOCRegisterMode mode) {
             Mode = mode;
             KeyDependent = groupByKey;
             ViewModelType = vm_type;

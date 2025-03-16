@@ -12,20 +12,20 @@ namespace Haley.Abstractions {
         /// </summary>
         bool IgnoreParentContainer { get; }
         #region Resolve Methods
-        T Resolve<T>(ResolveMode mode = ResolveMode.AsRegistered);
-        T Resolve<T>(string priority_key, ResolveMode mode = ResolveMode.AsRegistered);
-        object Resolve(Type contract_type, ResolveMode mode = ResolveMode.AsRegistered);
-        object Resolve(string priority_key, Type contract_type, ResolveMode mode = ResolveMode.AsRegistered);
-        T Resolve<T>(IMappingProvider mapping_provider, ResolveMode mode = ResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
-        object Resolve(Type contract_type, IMappingProvider mapping_provider, ResolveMode mode = ResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
-        object Resolve(string priority_key, Type contract_type, IMappingProvider mapping_provider, ResolveMode mode = ResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
+        T Resolve<T>(IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        T Resolve<T>(string priority_key, IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        object Resolve(Type contract_type, IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        object Resolve(string priority_key, Type contract_type, IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        T Resolve<T>(IMappingProvider mapping_provider, IOCResolveMode mode = IOCResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
+        object Resolve(Type contract_type, IMappingProvider mapping_provider, IOCResolveMode mode = IOCResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
+        object Resolve(string priority_key, Type contract_type, IMappingProvider mapping_provider, IOCResolveMode mode = IOCResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
         #endregion
 
         #region TryResolve Methods
-        bool TryResolve(Type contract_type, out object concrete_instance, ResolveMode mode = ResolveMode.AsRegistered);
-        bool TryResolve(string priority_key, Type contract_type, out object concrete_instance, ResolveMode mode = ResolveMode.AsRegistered);
-        bool TryResolve(Type contract_type, IMappingProvider mapping_provider, out object concrete_instance, ResolveMode mode = ResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
-        bool TryResolve(string priority_key, Type contract_type, IMappingProvider mapping_provider, out object concrete_instance, ResolveMode mode = ResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
+        bool TryResolve(Type contract_type, out object concrete_instance, IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        bool TryResolve(string priority_key, Type contract_type, out object concrete_instance, IOCResolveMode mode = IOCResolveMode.AsRegistered);
+        bool TryResolve(Type contract_type, IMappingProvider mapping_provider, out object concrete_instance, IOCResolveMode mode = IOCResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
+        bool TryResolve(string priority_key, Type contract_type, IMappingProvider mapping_provider, out object concrete_instance, IOCResolveMode mode = IOCResolveMode.AsRegistered, bool currentOnlyAsTransient = false);
         #endregion
 
         #region ResolveTransient Methods

@@ -7,32 +7,32 @@ namespace Haley.Abstractions {
         string Id { get; }
 
         #region Registration methods
-        string Register<VMType, ViewType>(VMType InputViewModel = null, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.ContainerSingleton)
+        string Register<VMType, ViewType>(VMType InputViewModel = null, bool use_vm_as_key = true, IOCRegisterMode mode = IOCRegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
-        string RegisterWithKey<VMType, ViewType>(object key, VMType InputViewModel = null, RegisterMode mode = RegisterMode.ContainerSingleton, bool groupByKey = false)
+        string RegisterWithKey<VMType, ViewType>(object key, VMType InputViewModel = null, IOCRegisterMode mode = IOCRegisterMode.ContainerSingleton, bool groupByKey = false)
             where VMType : class, BaseVMType
             where ViewType : class;
 
-        string LazyRegister<VMType, ViewType>(Func<VMType> creator = null, bool use_vm_as_key = true, RegisterMode mode = RegisterMode.ContainerSingleton)
+        string LazyRegister<VMType, ViewType>(Func<VMType> creator = null, bool use_vm_as_key = true, IOCRegisterMode mode = IOCRegisterMode.ContainerSingleton)
             where VMType : class, BaseVMType
             where ViewType : class;
-        string LazyRegisterWithKey<VMType, ViewType>(object key, Func<VMType> creator = null, RegisterMode mode = RegisterMode.ContainerSingleton, bool groupByKey = false)
+        string LazyRegisterWithKey<VMType, ViewType>(object key, Func<VMType> creator = null, IOCRegisterMode mode = IOCRegisterMode.ContainerSingleton, bool groupByKey = false)
             where VMType : class, BaseVMType
             where ViewType : class;
         #endregion
 
         #region View Generation Methods
-        object GenerateView<viewmodelType>(viewmodelType InputViewModel = null, ResolveMode mode = ResolveMode.AsRegistered)
+        object GenerateView<viewmodelType>(viewmodelType InputViewModel = null, IOCResolveMode mode = IOCResolveMode.AsRegistered)
             where viewmodelType : class, BaseVMType;
-        viewType GenerateView<viewType>(object InputViewModel = null, ResolveMode mode = ResolveMode.AsRegistered)
+        viewType GenerateView<viewType>(object InputViewModel = null, IOCResolveMode mode = IOCResolveMode.AsRegistered)
             where viewType : class;
-        object GenerateViewFromKey(object key, object InputViewModel = null, ResolveMode mode = ResolveMode.AsRegistered);
+        object GenerateViewFromKey(object key, object InputViewModel = null, IOCResolveMode mode = IOCResolveMode.AsRegistered);
 
         #endregion
 
         #region ViewModel Generation methods
-        BaseVMType GenerateViewModelFromKey(object key, ResolveMode mode = ResolveMode.AsRegistered);
+        BaseVMType GenerateViewModelFromKey(object key, IOCResolveMode mode = IOCResolveMode.AsRegistered);
         UIGroupInfo GetMappingValue(Enum @enum);
         UIGroupInfo GetMappingValue(string key);
         string FindKey(Type target_type);
