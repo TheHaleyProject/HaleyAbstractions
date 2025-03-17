@@ -7,6 +7,7 @@ using System;
 namespace Haley.Abstractions {
     public interface IDBService: IDictionary<string, IDBAdapter>, IDBCrudHandler{
         //This should be stateless as every controller might call this concurrently.
+        bool ThrowCRUDExceptions { get; }
         Guid Id { get; }
         void SetServiceUtil(IDBServiceUtil util);
         Task<object> GetFirst(object input, ResultFilter filter = ResultFilter.None);

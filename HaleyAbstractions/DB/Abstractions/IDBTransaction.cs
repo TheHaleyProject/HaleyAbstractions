@@ -6,8 +6,8 @@ using System;
 
 namespace Haley.Abstractions {
     public interface IDBTransaction: IDisposable {
-        Task<IDBTransaction> Begin();
-        Task Commit();
-        Task Rollback();
+        IDBTransaction Begin();
+        void Commit();
+        void Rollback();
     }
 }
