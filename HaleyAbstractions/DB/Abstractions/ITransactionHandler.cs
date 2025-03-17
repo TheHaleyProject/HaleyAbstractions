@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 namespace Haley.Abstractions
 {
     public interface ITransactionHandler : IDBTransaction, IDBModuleExecution , IAdapterCrudHandler, IDBModuleFetchStatus {
-        //Should be able to call modules, also directly call adapters, and most importantly based on transaction.
+        P CreateDBInput<P>() where P : IDBModuleInput,new();
+        P CreateDBInput<P>(P arg) where P : IDBModuleInput;
     }
 }
