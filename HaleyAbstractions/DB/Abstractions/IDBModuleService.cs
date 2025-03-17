@@ -14,5 +14,6 @@ namespace Haley.Abstractions {
             where M : class,IDBModule; //Register a module
         void SetDefaultAdapterKey(string adapterKey);
         void SetDefaultAdapterKey<P>(string adapterKey) where P : IDBModuleInput;
+        ITransactionHandler GetTransactionHandler<P>() where P : IDBModuleInput;
     }
 }

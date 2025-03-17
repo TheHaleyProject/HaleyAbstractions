@@ -6,5 +6,7 @@ namespace Haley.Abstractions
 {
     public interface IDBModuleInput : IParameterBase {
         Enum Command { get;}
+        object[] Arguments { get; }
+        void ClearParameters();
     }
 }

@@ -25,6 +25,7 @@ namespace Haley.Models
         protected virtual void SetParametersInternal(Dictionary<string,object> parameters) {
             _parameters = new ConcurrentDictionary<string, object>(parameters);
         }
+        protected void ClearParametersInternal() => _parameters = new ConcurrentDictionary<string, object>();
         public string Id { get; }
         public ParameterBase() : this(null) { }
         public ParameterBase(string key) {
