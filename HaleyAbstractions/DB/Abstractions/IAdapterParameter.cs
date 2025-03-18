@@ -6,6 +6,7 @@ namespace Haley.Abstractions
 {
     public interface IAdapterParameter : IParameterBase
     {
+        bool TransactionMode { get; }
         ResultFilter Filter { get; set; }
         //string Conn { get; set; }
         string Query { get; set; }

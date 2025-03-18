@@ -5,9 +5,10 @@ using System;
 namespace Haley.Abstractions
 {
     public interface IDBModuleInput : IParameterBase {
-        bool TransactionModeOnly { get; }
+        bool TransactionMode { get; }
         Enum Command { get;}
         object[] Arguments { get; }
         void ClearParameters();
+        void ClearArguments();
     }
 }
