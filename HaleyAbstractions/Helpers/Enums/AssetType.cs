@@ -34,6 +34,8 @@ namespace Haley.Enums {
         [Description("WmiMonitorID")]
         Monitor,
         [Description("win32_processor")]
-        Processor
+        Processor,
+        [Description("win32_useraccount")]
+        UserAccount
     }
 }

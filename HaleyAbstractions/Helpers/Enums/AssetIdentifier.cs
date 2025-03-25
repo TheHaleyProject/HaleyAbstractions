@@ -3,6 +3,7 @@
        MotherBoardID,
        ProcessorID,
        ComputerUserName,
-       BIOSID
+       BIOSID,
+       ComputerUserFullName,
     }
 }
