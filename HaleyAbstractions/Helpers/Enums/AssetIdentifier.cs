@@ -1,7 +1,8 @@
 ﻿namespace Haley.Enums {
-    public enum IDObject {
+    public enum AssetIdentifier {
        MotherBoardID,
        ProcessorID,
-       ComputerUserName
+       ComputerUserName,
+       BIOSID
     }
 }
