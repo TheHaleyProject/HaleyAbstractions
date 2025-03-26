@@ -4,6 +4,5 @@
        ProcessorID,
        ComputerUserName,
        BIOSID,
-       ComputerUserFullName,
     }
 }
