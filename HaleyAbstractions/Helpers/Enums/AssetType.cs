@@ -11,6 +11,7 @@ namespace Haley.Enums {
         LogicalDisk,
         [Description("win32_physicalmedia")]
         PhysicalMedia,
+        [Scope("root\\cimv2")]
         [Description("win32_diskdrive")]
         DiskDrive,
         [Description("win32_physicalmemory")]
