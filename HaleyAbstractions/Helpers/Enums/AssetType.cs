@@ -36,6 +36,8 @@ namespace Haley.Enums {
         [Description("win32_processor")]
         Processor,
         [Description("win32_useraccount")]
-        UserAccount
+        UserAccount,
+        [Description("win32_videocontroller")]
+        GraphicsCard
     }
 }
