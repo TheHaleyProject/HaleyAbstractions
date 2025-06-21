@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 namespace Haley.Abstractions {
 
     public interface IDBModule<P> : IDBModule
-        where P : IDBModuleInput {
+        where P : IModuleArgs {
     }
 
-    public interface IDBModule : IDBModuleExecution {
+    public interface IDBModule : IModuleExecution {
         event EventHandler<DBModuleInitializedArgs> ModuleInitialized;
         Task<IFeedback> Initialize(); //will happen only once. //Why is this needed?
         bool IsInitialized { get; }

@@ -4,7 +4,7 @@ namespace Haley.Abstractions
 {
     public interface IDBAdapter : IAdapterCrudHandler {
         Guid Id { get; }
-        IDBAdapterInfo Info { get; }  //Read only.
-        void UpdateDBEntry(IDBAdapterInfo newentry);
+        IAdapterConfig Info { get; }  //Read only.
+        void UpdateDBEntry(IAdapterConfig newentry);
     }
 }

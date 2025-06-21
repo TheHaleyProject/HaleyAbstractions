@@ -4,7 +4,7 @@ using System;
 
 namespace Haley.Abstractions
 {
-    public interface IDBModuleInput : IParameterBase {
+    public interface IModuleArgs : IParameterBase {
         bool TransactionMode { get; }
         Enum Command { get;}
         object[] Arguments { get; }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 namespace Haley.Abstractions {
-    public interface IDBModuleExecution {
-        Task<IFeedback> Execute<P>(P arg) where P : IDBModuleInput;
+    public interface IModuleExecution {
+        Task<IFeedback> Execute<P>(P arg) where P : IModuleArgs;
     }
 }

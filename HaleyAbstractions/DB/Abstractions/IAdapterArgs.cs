@@ -4,7 +4,7 @@ using System;
 
 namespace Haley.Abstractions
 {
-    public interface IAdapterParameter : IParameterBase
+    public interface IAdapterArgs : IParameterBase
     {
         bool TransactionMode { get; }
         ResultFilter Filter { get; set; }
