@@ -5,9 +5,11 @@ using System.Reflection;
 
 namespace Haley.Abstractions {
     public interface IModuleStatus {
-        IDBModule GetModule<P>() where P : IModuleArgs;
-        string GetAdapterKey<P>() where P : IModuleArgs;
+        IDBModule GetModule<E>() where E : Enum;
+        IDBModule GetModule(Type enumType);
+        string GetAdapterKey<E>() where E : Enum;
+        string GetAdapterKey(Type enumType);
         string GetAdapterKey();
-        IFeedback GetCommandStatus<P>(Enum cmd) where P : IModuleArgs;
+        IFeedback GetCommandStatus(Enum cmd);
     }
 }

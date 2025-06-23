@@ -9,10 +9,22 @@ using System.Threading.Tasks;
 namespace Haley.Models
 {
     public abstract class ParameterBase : IParameterBase {
-        Dictionary<string, object> _parameters = new Dictionary<string, object>();
+        #region Attributes
+        Dictionary<string, Dictionary<string, object>> _groupParameters = new Dictionary<string, Dictionary<string, object>>(StringComparer.InvariantCultureIgnoreCase);
+        Dictionary<string, object> _parameters = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+        #endregion
+        
         public IReadOnlyDictionary<string, object> Parameters => _parameters; //Return as readonly
+        public IReadOnlyDictionary<string, object> GetGroupParameters(string key) {
+            if (string.IsNullOrWhiteSpace(key) ||! _groupParameters.ContainsKey(key)) return null;
+            IReadOnlyDictionary<string,object> result= _groupParameters[key];
+            return result;
+        }
+        public string Id { get; }
         public string Key { get; set; }
-        protected virtual bool AddParameterInternal (string key, object value, bool replace = true) {
+
+        #region Protected Methods
+        protected virtual bool AddParameterInternal(string key, object value, bool replace = true) {
             if (string.IsNullOrWhiteSpace(key)) return false;
             if (_parameters.ContainsKey(key)) {
                 if (!replace) return false;//Contains the key and replace is also not allowed.
@@ -23,11 +35,48 @@ namespace Haley.Models
             }
             return true;
         }
-        protected virtual void SetParametersInternal(Dictionary<string,object> parameters) {
-            _parameters = new Dictionary<string, object>(parameters);
+        protected virtual void SetParametersInternal(Dictionary<string, object> parameters) {
+            _parameters = new Dictionary<string, object>(parameters, StringComparer.InvariantCultureIgnoreCase);
         }
-        protected void ClearParametersInternal() => _parameters = new Dictionary<string, object>();
-        public string Id { get; }
+        protected void ClearParametersInternal(bool includeGroups = false) {
+            _parameters = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+            if (includeGroups) {
+                _groupParameters = new Dictionary<string, Dictionary<string, object>>(StringComparer.InvariantCultureIgnoreCase);
+            }
+        } 
+
+        protected void AddParameterInternal(string groupKey, string key, object value, bool replace = true) {
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(groupKey)) throw new ArgumentNullException($@"Group parameter add failed. GroupKey & Key are mandatory");
+            if (!_groupParameters.ContainsKey(groupKey)) _groupParameters.Add(groupKey, new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase));
+
+            if (_groupParameters[groupKey].ContainsKey(key)) {
+                if (!replace) return;//Contains the key and replace is also not allowed.
+                _groupParameters[groupKey][key] = value;
+            } else {
+                //return _parameters.TryAdd(key, value); //For concurrency. At the moment, lets focus only on direct dictionaries
+                _groupParameters[groupKey].Add(key, value);
+            }
+        }
+
+        protected void SetParametersInternal(string groupKey, Dictionary<string, object> parameters) {
+            if (string.IsNullOrWhiteSpace(groupKey)) throw new ArgumentNullException($@"Group parameter set failed. GroupKey is mandatory");
+            if (parameters == null) parameters = new Dictionary<string, object>();
+
+            if (!_groupParameters.ContainsKey(groupKey)) {
+                _groupParameters.Add(groupKey, new Dictionary<string, object>(parameters, StringComparer.InvariantCultureIgnoreCase));
+            } else {
+                _groupParameters[groupKey] = new Dictionary<string, object>(parameters, StringComparer.InvariantCultureIgnoreCase);
+            }
+        }
+
+        protected void ClearParametersInternal(string groupKey) {
+            if (groupKey == null) return;
+            if (!_groupParameters.ContainsKey(groupKey)) return;
+            _groupParameters[groupKey].Clear();
+        }
+
+        #endregion
+
         public ParameterBase() : this(null) { }
         public ParameterBase(string key) {
             Key = key;
