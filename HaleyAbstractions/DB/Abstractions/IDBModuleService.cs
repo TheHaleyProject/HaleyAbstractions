@@ -6,6 +6,7 @@ using System.Reflection;
 namespace Haley.Abstractions {
     public interface IDBModuleService : IDBService, IModuleExecution, IModuleStatus {
         Task<IFeedback> TryRegisterAssembly(Assembly assembly,string defaultAdapterKey = null);
+        Task<IFeedback> TryRegisterAssembly(string defaultAdapterKey = null);
         Task<IFeedback> TryRegisterModule<M>()
            where M : class,IDBModule,new(); //Register a module
         Task<IFeedback> TryRegisterModule<M>(Dictionary<string, object> seed)
