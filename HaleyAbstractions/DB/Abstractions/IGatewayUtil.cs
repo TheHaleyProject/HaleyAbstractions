@@ -1,5 +1,5 @@
 ﻿namespace Haley.Abstractions {
-    public interface IDBServiceUtil  {
+    public interface IGatewayUtil  {
         object Convert(object input);
     }
 }
