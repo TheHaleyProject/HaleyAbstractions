@@ -7,6 +7,6 @@ namespace Haley.Abstractions
 {
     public interface ITransactionHandler : IDBTransaction, IModuleExecution , IAdapterCrudHandler, IModuleStatus {
         IModuleArgs CreateDBInput();
-        IModuleArgs CreateDBInput(IParameterBase args);
+        IModuleArgs CreateDBInput(IModuleArgs args);
     }
 }

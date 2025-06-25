@@ -6,6 +6,6 @@ using System.Reflection;
 namespace Haley.Abstractions {
     public interface IModuleExecution {
         Task<IFeedback> Execute(Enum cmd);
-        Task<IFeedback> Execute(Enum cmd, IParameterBase args); 
+        Task<IFeedback> Execute(Enum cmd, IModuleArgs args); 
     }
 }
