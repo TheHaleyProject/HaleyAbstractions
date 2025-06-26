@@ -10,9 +10,9 @@ namespace Haley.Abstractions
         object[] Arguments { get; }
         void ClearParameters();
         void ClearParameters(string groupKey);
-        void UpsertParameter(string key, object value, bool replace = true);
-        void UpsertParameter(string groupKey, string key, object value, bool replace = true);
-        void SetParameters(Dictionary<string, object> parameters);
-        void SetParameters(string groupKey, Dictionary<string, object> parameters);
+        IModuleArgs UpsertParameter(string key, object value, bool replace = true);
+        IModuleArgs UpsertParameter(string groupKey, string key, object value, bool replace = true);
+        IModuleArgs SetParameters(Dictionary<string, object> parameters);
+        IModuleArgs SetParameters(string groupKey, Dictionary<string, object> parameters);
     }
 }
