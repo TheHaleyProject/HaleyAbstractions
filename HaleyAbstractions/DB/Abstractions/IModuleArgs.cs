@@ -6,6 +6,7 @@ using System.Collections.Generic;
 namespace Haley.Abstractions
 {
     public interface IModuleArgs : IParameterBase {
+
         bool TransactionMode { get; }
         object[] Arguments { get; }
         void ClearParameters();

@@ -23,6 +23,21 @@ namespace Haley.Models
         public string Id { get; }
         public string Key { get; set; }
 
+        public object this[string key, string nested_key] {
+            get {
+                if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(nested_key) || !_groupParameters.ContainsKey(key)) return null;
+                var groupP = _groupParameters[key];
+                if (!groupP.ContainsKey(nested_key)) return null;
+                return groupP[nested_key];
+            }
+        }
+        public object this[string key] { 
+            get {
+                if (string.IsNullOrWhiteSpace(key) || !_parameters.ContainsKey(key)) return null; //Should we throw exception??
+                return _parameters[key];
+            }
+        }
+
         #region Protected Methods
         protected virtual bool AddParameterInternal(string key, object value, bool replace = true) {
             if (string.IsNullOrWhiteSpace(key)) return false;
