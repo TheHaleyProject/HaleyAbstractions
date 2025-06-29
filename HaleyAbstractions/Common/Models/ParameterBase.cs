@@ -20,9 +20,10 @@ namespace Haley.Models
             IReadOnlyDictionary<string,object> result= _groupParameters[key];
             return result;
         }
-        public string Id { get; }
+        public string Guid { get; }
         public string Key { get; set; }
-
+        public int Id { get; set; }
+        public string Name { get; set; }
         public object this[string key, string nested_key] {
             get {
                 if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(nested_key) || !_groupParameters.ContainsKey(key)) return null;
@@ -95,7 +96,7 @@ namespace Haley.Models
         public ParameterBase() : this(null) { }
         public ParameterBase(string key) {
             Key = key;
-            Id = Guid.NewGuid().ToString(); //Set a new GUID for this 
+            Guid = System.Guid.NewGuid().ToString(); //Set a new GUID for this 
         }
     }
 }
