@@ -6,6 +6,7 @@ using System.Reflection;
 namespace Haley.Abstractions {
     public interface IModularGateway : IAdapterGateway, IModuleExecution, IModuleStatus {
         Task<IFeedback> TryRegisterAssembly(Assembly assembly,string defaultAdapterKey = null);
+        Task<IFeedback> TryRegisterAssembly<T>(string defaultAdapterKey = null) where T : Type;
         Task<IFeedback> TryRegisterAssembly(string defaultAdapterKey = null); //Just register the Calling Assembly
         Task<IFeedback> TryRegisterModule<M>()
            where M : class,IDBModule,new(); //Register a module
