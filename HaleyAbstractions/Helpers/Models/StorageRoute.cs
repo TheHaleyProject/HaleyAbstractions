@@ -9,8 +9,8 @@ namespace Haley.Models {
             Path = path;
             return this;
         } //This 
-        public bool CanCreatePath { get; }
+        public bool CreateIfMissing { get; }
         public bool IsFile { get; set; }
-        public StorageRoute(string key, string path, bool isfile, bool createIfMissing) { Key = key; Path = path; CanCreatePath = createIfMissing; IsFile = isfile; }
+        public StorageRoute(string key, string path, bool isfile, bool createIfMissing) { Key = key; Path = path; CreateIfMissing = createIfMissing; IsFile = isfile; }
     }
 }
