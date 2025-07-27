@@ -14,9 +14,5 @@ namespace Haley.Abstractions {
         Task<IFeedback> DeleteDirectory(IObjectReadRequest input, bool recursive);
         Task<IFeedback> AuthorizeClient(object clientInfo, object clientSecret);
         string GetBasePath();
-        //When you initiate with should not be based on Adapter gateway. It should be a separate service. The consumer should be able to inject any potential service. Not necssarily in localhost, may be externally also it could be present.
-        void SetIndexingService(IStorageIndexingService service);
-        IStorageIndexingService Indexer { get; }
-        bool EnableIndexing { get; set; }
     }
 }

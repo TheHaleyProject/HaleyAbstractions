@@ -10,6 +10,7 @@ namespace Haley.Abstractions
         IAdapterArgs SetAdapterKey(string key);
         bool TransactionMode { get; }
         ResultFilter Filter { get; set; }
+        bool ExcludeDBInConString { get; set; }
         //string Conn { get; set; }
         string Query { get; set; }
         ILogger Logger { get; set; }
