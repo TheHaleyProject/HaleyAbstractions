@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using System;
+using Haley.Models;
 
 namespace Haley.Abstractions {
     public interface IStorageIndexingService {
-        Task<IFeedback> RegisterClient(string display_name, string password, string path = null);
+        Task<IFeedback> RegisterClient(ClientDirectoryInfo info);
         Task Validate();
     }
 }

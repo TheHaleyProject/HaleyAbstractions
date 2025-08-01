@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace Haley.Models {
     public class AdapterArgs : ParameterBase, IAdapterArgs {
-        internal IDBAdapter Adapter { get; set; }
+        public IDBAdapter Adapter { get; set; }
        
         public ResultFilter Filter { get; set; }
         public string Query { get; set; }
         public bool ExcludeDBInConString { get; set; }
         public ILogger  Logger { get; set; }
-        internal bool ReturnsResult { get; set; }
-        internal bool IsScalar { get; set; }
+        public bool ReturnsResult { get; set; }
+        public bool IsScalar { get; set; }
         public Func<string, object, bool> ParamHandler { get; set; }
         public string OutputName { get; set; }
         public bool Prepare { get; set; } = false;

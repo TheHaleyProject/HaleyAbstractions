@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Haley.Enums;
+using System.Threading.Tasks;
 
 namespace Haley.Abstractions {
     public interface IObjectStorageService {
@@ -9,14 +10,5 @@ namespace Haley.Abstractions {
         Task<IFeedback> Delete(IObjectReadRequest input);
         IFeedback Exists(IObjectReadRequest input);
         long GetSize(IObjectReadRequest input);
-        Task<IDirectoryInfoResponse> GetDirectoryInfo(IObjectReadRequest input);
-        Task<IObjectCreateResponse> CreateDirectory(IObjectReadRequest input, string rawname);
-        Task<IFeedback> DeleteDirectory(IObjectReadRequest input, bool recursive);
-        Task<IFeedback> AuthorizeClient(object clientInfo, object clientSecret);
-        string GetBasePath();
-
-        bool EnableIndexing { get; set; }
-        IStorageIndexingService Indexer { get; }
-        Task<IFeedback> RegisterClient(string name, string full_name, bool ismanaged = false, string suffix_file = "f", string suffix_dir = "d");
     }
 }
