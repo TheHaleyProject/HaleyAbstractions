@@ -14,5 +14,9 @@ namespace Haley.Abstractions {
         Task<IFeedback> DeleteDirectory(IObjectReadRequest input, bool recursive);
         Task<IFeedback> AuthorizeClient(object clientInfo, object clientSecret);
         string GetBasePath();
+
+        bool EnableIndexing { get; set; }
+        IStorageIndexingService Indexer { get; }
+        Task<IFeedback> RegisterClient(string name, string full_name, bool ismanaged = false, string suffix_file = "f", string suffix_dir = "d");
     }
 }
