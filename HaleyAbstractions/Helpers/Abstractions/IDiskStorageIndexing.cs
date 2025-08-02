@@ -7,5 +7,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterClient(ClientDirectoryInfo info);
         Task<IFeedback> RegisterModule(ModuleDirectoryInfo info);
         Task Validate();
+        ClientDirectoryInfo GetClientInfo(string name);
+        ModuleDirectoryInfo GetModuleInfo(string name);
     }
 }
