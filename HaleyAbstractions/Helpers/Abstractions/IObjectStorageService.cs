@@ -10,5 +10,6 @@ namespace Haley.Abstractions {
         Task<IFeedback> Delete(IObjectReadRequest input);
         IFeedback Exists(IObjectReadRequest input);
         long GetSize(IObjectReadRequest input);
+        bool WriteMode { get; }
     }
 }
