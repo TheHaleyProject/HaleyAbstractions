@@ -7,5 +7,10 @@ namespace Haley.Models {
     public class StorageNameInfo {
         public string Name { get; set; }
         public bool IsControlled { get; set; }
+        public StorageNameInfo() { }
+        public StorageNameInfo(string name, bool iscontrolled) {
+            Name = name;
+            IsControlled = iscontrolled;
+        }
     }
 }
