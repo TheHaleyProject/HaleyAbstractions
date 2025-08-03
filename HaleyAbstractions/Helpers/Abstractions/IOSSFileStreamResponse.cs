@@ -1,7 +1,7 @@
 ﻿using System.IO;
 
 namespace Haley.Abstractions {
-    public interface IFileStreamResponse : IFeedback {
+    public interface IOSSFileStreamResponse : IFeedback {
         Stream Stream { get; set; }
         string Extension { get; set; }
     }
