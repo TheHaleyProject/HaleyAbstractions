@@ -8,18 +8,29 @@ using System.Xml.Linq;
 
 namespace Haley.Models {
     public class OSSName {
-        public string Name { get; set; }
-        public string TargetName { get; set; } //Should be the controlled name
+        public const string DEFAULTNAME = "default";
+        public string Name { get; private set; }
+        private string _displayName;
+
+        public string DisplayName {
+            get { return _displayName; }
+            set { _displayName = value;
+                if (!string.IsNullOrWhiteSpace(value)) {
+                    Name = value.Trim().ToLower().Replace(" ", "_");
+                }
+            }
+        }
+        public string ControlledName { get; set; } //Should be the controlled name or a name compatible for the database 
         public OSSControlMode ControlMode { get; set; } //Parsing or create mode is defined at application level?
         public OSSParseMode ParseMode { get; set; } //If false, we fall back to parsing.
         public IFeedback Validate() {
-            if (string.IsNullOrWhiteSpace(Name)) return new Feedback(false, "Name is empty");
-            if (Name.Contains("..") || Name.Contains(@"\") || Name.Contains(@"/")) return new Feedback(false, "Name contains invalid characters");
+            if (string.IsNullOrWhiteSpace(DisplayName)) return new Feedback(false, "Name is empty");
+            if (DisplayName.Contains("..") || DisplayName.Contains(@"\") || DisplayName.Contains(@"/")) return new Feedback(false, "Name contains invalid characters");
             return new Feedback(true);
         }
-        public OSSName() { }
+        public OSSName():this(null) { }
         public OSSName(string name, OSSControlMode control = OSSControlMode.None, OSSParseMode parse = OSSParseMode.Parse) {
-            Name = name;
+            DisplayName = name ?? DEFAULTNAME; //Don't accept null values.
             ControlMode = control;
             ParseMode = parse;
         }
