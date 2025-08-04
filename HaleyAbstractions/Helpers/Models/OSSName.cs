@@ -20,7 +20,7 @@ namespace Haley.Models {
                 }
             }
         }
-        public string ControlledName { get; set; } //Should be the controlled name or a name compatible for the database 
+        public string SaveAsName { get; set; } //Should be the controlled name or a name compatible for the database 
         public OSSControlMode ControlMode { get; set; } //Parsing or create mode is defined at application level?
         public OSSParseMode ParseMode { get; set; } //If false, we fall back to parsing.
         public IFeedback Validate() {
