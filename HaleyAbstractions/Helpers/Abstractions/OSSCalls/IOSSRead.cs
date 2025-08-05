@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Haley.Abstractions {
     public interface IOSSRead {
-        IOSSCtrld Client { get; }
-        IOSSCtrld Module { get; }
+        IOSSControlled Client { get; }
+        IOSSControlled Module { get; }
         string TargetPath { get; }
         int Version { get; }
         string TargetName { get; } //This could be like "a32fbc213..." but target path could be like "a3/2f/bc/..."
-        List<IOSSRoute> StorageRoutes { get; }
+        List<OSSRoute> StorageRoutes { get; }
     }
 }

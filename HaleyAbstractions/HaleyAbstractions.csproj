@@ -50,8 +50,4 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\Models\" />
-  </ItemGroup>
-
 </Project>

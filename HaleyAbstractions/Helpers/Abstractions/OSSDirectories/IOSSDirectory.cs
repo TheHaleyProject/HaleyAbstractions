@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Haley.Models {
-    public class IOSSDirectory : IOSSCtrld {
-        public string Path { get; set; }
+namespace Haley.Abstractions {
+    public interface IOSSDirectory : IOSSControlled {
+        string Path { get; set; }
     }
 }
