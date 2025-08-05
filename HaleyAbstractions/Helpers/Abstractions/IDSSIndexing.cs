@@ -4,12 +4,12 @@ using Haley.Models;
 
 namespace Haley.Abstractions {
     public interface IDSSIndexing {
-        Task<IFeedback> RegisterClient(OSSClientInfo info);
-        Task<IFeedback> RegisterModule(OSSModuleInfo info);
+        Task<IFeedback> RegisterClient(IOSSClient info);
+        Task<IFeedback> RegisterModule(IOSSModule info);
         Task Validate();
-        OSSClientInfo GetClientInfo(string name);
-        OSSModuleInfo GetModuleInfo(string name,string client_name);
-        bool TryAddInfo(OSSDirectory dirInfo);
+        IOSSClient GetClientInfo(string name);
+        IOSSModule GetModuleInfo(string name,string client_name);
+        bool TryAddInfo(IOSSDirectory dirInfo);
         bool TryCreateModuleKey(string name, string client_name, out string modKey);
     }
 }

@@ -11,7 +11,7 @@ namespace Haley.Abstractions {
         Task<IOSSResponse> Upload(IOSSWrite input);
         Task<IOSSFileStreamResponse> Download(IOSSRead input, bool auto_search_extension = true);
         Task<IFeedback> Delete(IOSSRead input);
-        IFeedback Exists(IOSSRead input);
+        IFeedback Exists(IOSSRead input, bool isFilePath = false);
         long GetSize(IOSSRead input);
         bool WriteMode { get; }
     }
