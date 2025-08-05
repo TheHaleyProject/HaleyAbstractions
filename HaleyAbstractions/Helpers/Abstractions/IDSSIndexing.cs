@@ -8,6 +8,8 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterModule(OSSModuleInfo info);
         Task Validate();
         OSSClientInfo GetClientInfo(string name);
-        OSSModuleInfo GetModuleInfo(string name);
+        OSSModuleInfo GetModuleInfo(string name,string client_name);
+        bool TryAddInfo(OSSDirectory dirInfo);
+        bool TryCreateModuleKey(string name, string client_name, out string modKey);
     }
 }

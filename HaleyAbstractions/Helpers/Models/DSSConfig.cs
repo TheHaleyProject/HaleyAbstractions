@@ -6,13 +6,13 @@ using System.Text;
 namespace Haley.Models {
     public class DSSConfig {
         //All suffix are applicable only when dealing with controlled names.
-        public string ClientSuffix { get; set; } = "c";
-        public string ModuleSuffix { get; set; } = "m";
-        public string DirectorySuffix { get; set; } = "d";
-        public string FileSuffix { get; set; } = "f";
-        public int NumberSplitLength = 2; //For numbers
-        public int HashSplitLength = 1; //For numbers
-        public int NumberDepth = 0;
-        public int HashDepth = 8; 
+        public string SuffixClient { get; set; } = "c";
+        public string SuffixModule { get; set; } = "m";
+        public string SuffixDirectory { get; set; } = "d";
+        public string SuffixFile { get; set; } = "f";
+        public int SplitLengthNumber { get; set; } = 2; //For numbers
+        public int DepthNumber { get; set; } = 0;
+        public int SplitLengthHash { get; set; } = 1; //For Hash
+        public int DepthHash { get; set; } = 8;
     }
 }
