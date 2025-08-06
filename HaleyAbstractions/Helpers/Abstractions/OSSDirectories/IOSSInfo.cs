@@ -5,7 +5,9 @@ using System.Text;
 namespace Haley.Abstractions {
     public interface IOSSInfo  {
         string Name { get;  }
-        string DisplayName { get; set; }
-        string Guid { get; set; } //Name with which it is identified
+        string DisplayName { get; }
+        string Guid { get; } //Name with which it is identified
+        string Cuid { get; } //Collision resistance Unique Identifier
+        bool TryValidate(out string message);
     }
 }

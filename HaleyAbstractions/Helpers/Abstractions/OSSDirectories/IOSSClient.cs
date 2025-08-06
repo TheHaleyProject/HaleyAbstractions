@@ -8,7 +8,6 @@ namespace Haley.Abstractions {
         string SigningKey { get; set; }
         string EncryptKey { get; set; }
         string PasswordHash { get; set; }
-
-        void Assert();
+       
     }
 }

@@ -8,7 +8,7 @@ namespace Haley.Abstractions {
         //All suffix are applicable only when dealing with controlled names.
         string SuffixClient { get; set; }
         string SuffixModule { get; set; } 
-        string SuffixDirectory { get; set; } 
+        string SuffixWorkSpace { get; set; } 
         string SuffixFile { get; set; } 
         int SplitLengthNumber { get; set; } 
         int DepthNumber { get; set; } 

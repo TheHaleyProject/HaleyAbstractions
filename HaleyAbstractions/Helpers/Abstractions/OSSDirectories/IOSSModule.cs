@@ -7,6 +7,5 @@ namespace Haley.Abstractions {
     public interface IOSSModule : IOSSDirectory {
         IOSSInfo Client { get; set; }
         string DatabaseName { get; set; }
-        void Assert();
     }
 }

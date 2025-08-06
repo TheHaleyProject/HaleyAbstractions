@@ -6,10 +6,10 @@ namespace Haley.Abstractions {
     public interface IDSSIndexing {
         Task<IFeedback> RegisterClient(IOSSClient info);
         Task<IFeedback> RegisterModule(IOSSModule info);
+        Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
         Task Validate();
-        IOSSClient GetClientInfo(string name);
-        IOSSModule GetModuleInfo(string name,string client_name);
-        bool TryAddInfo(IOSSDirectory dirInfo);
-        bool TryCreateModuleKey(string name, string client_name, out string modKey);
+        bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
+        bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);
+        bool TryMakeCUID(out string key,string workspaceName = null, string clientName= null,string moduleName = null);
     }
 }
