@@ -7,12 +7,14 @@ namespace Haley.Abstractions {
         //Onus of generating the path doesn't lie with the Storage service.
         //We need Store, Fetch, Delete
         IDSSConfig Config { get; }
-        Task<IFeedback> RegisterClient(string name, string password = null);
-        Task<IFeedback> RegisterClient(IOSSControlled name, string password = null);
-        Task<IFeedback> RegisterModule(string name, string client_name = null); //If a client is not registered, we register it against "Default"
-        Task<IFeedback> RegisterModule(IOSSControlled input, IOSSControlled client); //If a client is not registered, we register it against "Default"
-        Task<IFeedback> RegisterWorkSpace(string name, string client_name=null, string module_name=null, OSSControlMode content_control = OSSControlMode.None, OSSParseMode content_pmode = OSSParseMode.Parse); //If a client is not registered, we register it against "Default"
-        Task<IFeedback> RegisterWorkSpace(IOSSControlled input, IOSSControlled client,IOSSControlled module, OSSControlMode content_control = OSSControlMode.None, OSSParseMode content_pmode = OSSParseMode.Parse); //If a client is not registered, we register it against "Default"
+        Task<IFeedback> RegisterClient(string client_name = null, string password = null);
+        Task<IFeedback> RegisterModule(string module_name = null, string client_name = null); //If a client is not registered, we register it against "Default"
+        Task<IFeedback> RegisterWorkSpace(string workspace_name = null, string client_name = null, string module_name = null, OSSControlMode content_control = OSSControlMode.None, OSSParseMode content_pmode = OSSParseMode.Parse, bool is_virtual = false); //If a client is not registered, we register it against "Default"
+
+        Task<IFeedback> RegisterClient(IOSSControlled client, string password = null);
+        Task<IFeedback> RegisterModule(IOSSControlled module, IOSSControlled client); //If a client is not registered, we register it against "Default"
+        Task<IFeedback> RegisterWorkSpace(IOSSControlled wspace, IOSSControlled client,IOSSControlled module, OSSControlMode content_control = OSSControlMode.None, OSSParseMode content_pmode = OSSParseMode.Parse); //If a client is not registered, we register it against "Default"
+      
         Task<IFeedback> AuthorizeClient(object clientInfo, object clientSecret);
         string GetStorageRoot();
         IDiskStorageService SetIndexer(IDSSIndexing service);
