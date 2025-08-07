@@ -10,6 +10,5 @@ namespace Haley.Abstractions {
         Task Validate();
         bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
         bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);
-        bool TryMakeCUID(out string key,string workspaceName = null, string clientName= null,string moduleName = null);
     }
 }
