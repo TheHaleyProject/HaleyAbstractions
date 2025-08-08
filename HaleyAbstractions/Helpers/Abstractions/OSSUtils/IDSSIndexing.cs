@@ -7,8 +7,8 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterClient(IOSSClient info);
         Task<IFeedback> RegisterModule(IOSSModule info);
         Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
-        long IDGenerator(IOSSWorkspace wsInfo, string file_name);
-        Guid GUIDGenerator(IOSSWorkspace wsInfo, string file_name);
+        long IDGenerator(IOSSRead request);
+        Guid GUIDGenerator(IOSSRead request);
         Task Validate();
         bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
         bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);
