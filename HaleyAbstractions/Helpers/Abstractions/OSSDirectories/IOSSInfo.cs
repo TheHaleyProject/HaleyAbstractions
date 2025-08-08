@@ -8,6 +8,8 @@ namespace Haley.Abstractions {
         string DisplayName { get; }
         string Guid { get; } //Name with which it is identified
         string Cuid { get; } //Collision resistance Unique Identifier
+        //IOSSInfo SetCUID(string uid);
+        IOSSInfo UpdateCUID(params string[] parentNames);
         bool TryValidate(out string message);
     }
 }

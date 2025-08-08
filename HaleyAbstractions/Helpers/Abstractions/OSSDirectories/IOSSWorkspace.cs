@@ -9,6 +9,7 @@ namespace Haley.Abstractions {
         IOSSInfo Module { get; set; }
         OSSControlMode ContentControl { get; set; }
         OSSParseMode ContentParse { get; set; }
+        string DatabaseName { get; set; }
         void Assert();
     }
 }
