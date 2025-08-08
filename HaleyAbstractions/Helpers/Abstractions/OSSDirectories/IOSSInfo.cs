@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Haley.Abstractions {
     public interface IOSSInfo  {
+        long Id { get; set; }
         string Name { get;  }
         string DisplayName { get; }
         string Guid { get; } //Name with which it is identified

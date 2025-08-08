@@ -5,6 +5,8 @@ namespace Haley.Abstractions {
     public interface IObjectStorageService {
         //Onus of generating the path doesn't lie with the Storage service.
         //We need Store, Fetch, Delete
+        bool ThrowExceptions { get; }
+        string GetStorageRoot();
         Task<IOSSDirResponse> GetDirectoryInfo(IOSSRead input);
         Task<IOSSResponse> CreateDirectory(IOSSRead input, string rawname);
         Task<IFeedback> DeleteDirectory(IOSSRead input, bool recursive);

@@ -4,6 +4,7 @@ using Haley.Models;
 
 namespace Haley.Abstractions {
     public interface IDSSIndexing {
+        bool ThrowExceptions { get; }
         Task<IFeedback> RegisterClient(IOSSClient info);
         Task<IFeedback> RegisterModule(IOSSModule info);
         Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
