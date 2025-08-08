@@ -9,7 +9,7 @@ namespace Haley.Models {
         public IDBAdapter Adapter { get; set; }
        
         public ResultFilter Filter { get; set; }
-        public string Query { get; set; }
+        public object Query { get; set; }
         public bool ExcludeDBInConString { get; set; }
         public ILogger  Logger { get; set; }
         public bool ReturnsResult { get; set; }

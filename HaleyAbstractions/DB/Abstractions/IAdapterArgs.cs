@@ -12,7 +12,7 @@ namespace Haley.Abstractions
         ResultFilter Filter { get; set; }
         bool ExcludeDBInConString { get; set; }
         //string Conn { get; set; }
-        string Query { get; set; }
+        object Query { get; set; }
         ILogger Logger { get; set; }
         Func<string, object, bool> ParamHandler { get; set; }
         string OutputName { get; set; }

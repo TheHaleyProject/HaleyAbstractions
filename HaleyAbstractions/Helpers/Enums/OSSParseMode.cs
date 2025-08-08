@@ -2,6 +2,6 @@
     public enum OSSParseMode {
        Parse =0, //Only try to parse the input
        Generate = 1, //Ignore and directly try to force generate it regardless of the input
-       ParseOrGenerate = 2// Try to parse, if it doesn't work, create it.
+       //ParseOrGenerate = 2// Try to parse, if it doesn't work, create it. //Let us not overcomplicate this.. Either the input is sent or generated. Keep it simple.
     }
 }
