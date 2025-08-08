@@ -6,7 +6,7 @@ using System;
 
 namespace Haley.Abstractions {
     public interface IDBTransaction: IDisposable {
-        IDBTransaction Begin();
+        IDBTransaction Begin(bool ExcludeDBInConnectionString = false);
         void Commit();
         void Rollback();
     }
