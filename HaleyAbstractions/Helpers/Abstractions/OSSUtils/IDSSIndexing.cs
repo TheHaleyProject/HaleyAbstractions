@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System;
 using Haley.Models;
+using Haley.Enums;
 
 namespace Haley.Abstractions {
     public interface IDSSIndexing {
@@ -8,8 +9,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterClient(IOSSClient info);
         Task<IFeedback> RegisterModule(IOSSModule info);
         Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
-        long IDGenerator(IOSSRead request);
-        Guid GUIDGenerator(IOSSRead request);
+        (long id,Guid guid) UIDManager(IOSSRead request);
         Task Validate();
         bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
         bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);

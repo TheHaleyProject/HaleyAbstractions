@@ -6,8 +6,8 @@ namespace Haley.Abstractions {
     public interface IOSSWrite : IOSSRead, ICloneable {
         int BufferSize { get; set; }
         Stream FileStream { get; set; }
-        string FileOriginalName { get; set; }
-        string Id { get; set; }
-        OSSResolveMode ResolveMode { get; set; }
+        string FileOriginalName { get;  }
+        IOSSWrite SetFileOriginalName(string name);
+        OSSResolveMode ResolveMode { get;  }
     }
 }

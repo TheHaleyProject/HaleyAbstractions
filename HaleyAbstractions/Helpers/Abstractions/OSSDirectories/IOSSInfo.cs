@@ -4,13 +4,15 @@ using System.Text;
 
 namespace Haley.Abstractions {
     public interface IOSSInfo  {
-        long Id { get; set; }
+        long Id { get; }
         string Name { get;  }
         string DisplayName { get; }
         string Guid { get; } //Name with which it is identified
         string Cuid { get; } //Collision resistance Unique Identifier
         //IOSSInfo SetCUID(string uid);
         IOSSInfo UpdateCUID(params string[] parentNames);
+        IOSSInfo ForceSetId(long setId);
+        IOSSInfo ForceSetCuid(string guid);
         bool TryValidate(out string message);
     }
 }
