@@ -5,5 +5,6 @@ namespace Haley.Abstractions {
     public interface IOSSFileRoute : IOSSRoute{
         int Version { get; set; }
         long Size { get; set; }
+        string SaveAsName { get; set; }
     }
 }

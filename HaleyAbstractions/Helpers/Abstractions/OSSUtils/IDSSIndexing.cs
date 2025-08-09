@@ -10,7 +10,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterModule(IOSSModule info);
         Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
         (long id,Guid guid) RegisterDocuments(IOSSRead request, IOSSControlled holder);
-        Task<IFeedback> UpdateDocumentInfo(string moduleCuid,IOSSFileRoute file, string savedName);
+        Task<IFeedback> UpdateDocumentInfo(string moduleCuid,IOSSFileRoute file);
         Task Validate();
         bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
         bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);
