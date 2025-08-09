@@ -13,6 +13,7 @@ namespace Haley.Abstractions {
         IOSSInfo UpdateCUID(params string[] parentNames);
         IOSSInfo ForceSetId(long setId);
         IOSSInfo ForceSetCuid(string guid);
+        IOSSInfo ForceSetCuid(Guid guid);
         bool TryValidate(out string message);
     }
 }
