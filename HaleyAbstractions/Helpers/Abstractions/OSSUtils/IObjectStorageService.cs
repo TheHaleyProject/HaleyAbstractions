@@ -11,8 +11,9 @@ namespace Haley.Abstractions {
         Task<IOSSResponse> CreateDirectory(IOSSRead input, string rawname);
         Task<IFeedback> DeleteDirectory(IOSSRead input, bool recursive);
         Task<IOSSResponse> Upload(IOSSWrite input);
-        Task<IOSSFileStreamResponse> Download(IOSSRead input, bool auto_search_extension = true);
-        Task<IFeedback> Delete(IOSSRead input);
+        Task<IOSSFileStreamResponse> Download(IOSSReadFile input, bool auto_search_extension = true);
+        Task<IOSSFileStreamResponse> Download(IOSSFileRoute input, bool auto_search_extension = true);
+        Task<IFeedback> Delete(IOSSReadFile input);
         IFeedback Exists(IOSSRead input, bool isFilePath = false);
         long GetSize(IOSSRead input);
         bool WriteMode { get; }
