@@ -9,9 +9,12 @@ namespace Haley.Abstractions {
         IOSSControlled Workspace { get; }
         string TargetPath { get; }
         string TargetName { get;  } //This could be like "a32fbc213..." but target path could be like "a3/2f/bc/..."
+        bool ReadOnlyMode { get; }
+        IOSSRead SetMode(bool readOnly);
         IOSSRead SetTargetName(string name);
         IOSSRead SetTargetPath(string path);
+        IOSSRead SetFolder(IOSSFolderRoute folder);
         IOSSRead SetComponent(IOSSControlled input, OSSComponent type);
-        IOSSFolderRoute Folder { get; set; }
+        IOSSFolderRoute Folder { get; }
     }
 }
