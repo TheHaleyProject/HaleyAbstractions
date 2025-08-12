@@ -10,7 +10,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterModule(IOSSModule info);
         Task<IFeedback> RegisterWorkspace(IOSSWorkspace info);
         (long id,Guid guid) RegisterDocuments(IOSSRead request, IOSSControlled holder);
-        Task<IFeedback> UpdateDocVersionInfo(string moduleCuid,IOSSFileRoute file);
+        Task<IFeedback> UpdateDocVersionInfo(string moduleCuid, IOSSFileRoute file, string callId = null);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, long id);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string cuid);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string wsCuid, string file_name, string dir_name = OSSConstants.DEFAULT_NAME, long dir_parent_id = 0);
