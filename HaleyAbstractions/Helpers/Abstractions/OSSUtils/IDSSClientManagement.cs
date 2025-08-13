@@ -1,6 +1,7 @@
 ﻿using Haley.Enums;
 using System.Threading.Tasks;
 using Haley.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Haley.Abstractions {
     public interface IDSSClientManagement {
@@ -14,7 +15,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterClient(IOSSControlled client, string password = null);
         Task<IFeedback> RegisterModule(IOSSControlled module, IOSSControlled client); //If a client is not registered, we register it against "Default"
         Task<IFeedback> RegisterWorkSpace(IOSSControlled wspace, IOSSControlled client,IOSSControlled module, OSSControlMode content_control = OSSControlMode.Number, OSSParseMode content_pmode = OSSParseMode.Generate); //If a client is not registered, we register it against "Default"
-
+        Task<IFeedback> RegisterFromSource(IConfigurationSection section = null);
         Task<IFeedback> AuthorizeClient(object clientInfo, object clientSecret);
     }
 }
