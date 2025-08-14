@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Haley.Abstractions {
     public interface IOSSRead {
         string CallID { get;  }
+        bool GenerateCallId();
         IOSSControlled Client { get; }
         IOSSControlled Module { get; }
         IOSSControlled Workspace { get; }
