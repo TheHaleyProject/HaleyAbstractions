@@ -15,5 +15,6 @@ namespace Haley.Abstractions
         IModuleArgs UpsertParameter(string groupKey, string key, object value, bool replace = true);
         IModuleArgs SetParameters(Dictionary<string, object> parameters);
         IModuleArgs SetParameters(string groupKey, Dictionary<string, object> parameters);
+        IModuleArgs SetArguments(params object[] arguments);
     }
 }

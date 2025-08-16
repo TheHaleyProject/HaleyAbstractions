@@ -30,6 +30,12 @@ namespace Haley.Models
         public static void Assert(params object[] input) {
             if (input.Any(p => p == null)) throw new ArgumentNullException("Required input object is missing");
         }
+
+        public IModuleArgs SetArguments(params object[] arguments) {
+            Arguments = arguments;
+            return this;
+        }
+
         public ModuleArgs(string key) : base(key) { }
         public ModuleArgs() { }
     }
