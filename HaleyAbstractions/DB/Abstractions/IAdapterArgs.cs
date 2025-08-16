@@ -18,6 +18,7 @@ namespace Haley.Abstractions
         Func<string, object, bool> ParamHandler { get; set; }
         string OutputName { get; set; }
         bool Prepare { get; set; }
+        IAdapterArgs SetFilter(ResultFilter filter);
         IAdapterArgs UpsertParameter(string key, object value, bool replace = true);
         IAdapterArgs UpsertParameter(string groupKey, string key, object value, bool replace = true);
         IAdapterArgs SetParameters(Dictionary<string, object> parameters);

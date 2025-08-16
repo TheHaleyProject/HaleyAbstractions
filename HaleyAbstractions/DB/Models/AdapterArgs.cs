@@ -23,6 +23,11 @@ namespace Haley.Models {
             return this;
         }
 
+        public IAdapterArgs SetFilter(ResultFilter filter) {
+            Filter = filter;
+            return this;
+        }
+
         public IAdapterArgs SetParameters(Dictionary<string, object> parameters) {
              SetParametersInternal(parameters);
             return this;
