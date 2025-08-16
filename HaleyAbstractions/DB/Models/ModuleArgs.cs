@@ -7,7 +7,8 @@ namespace Haley.Models
 {
     public class ModuleArgs : ParameterBase, IModuleArgs{
         public IDBAdapter Adapter { get; set; }
-        public object[] Arguments { get; protected set; }
+        public bool IsDevelopment { get; set; }
+        public Dictionary<string, object> Arguments { get; protected set; } = new Dictionary<string, object>();
         public void ClearParameters() => ClearParametersInternal(true);
         public void ClearParameters(string groupKey) => ClearParametersInternal(groupKey);
         public IModuleArgs UpsertParameter(string key, object value, bool replace = true) {
@@ -31,8 +32,15 @@ namespace Haley.Models
             if (input.Any(p => p == null)) throw new ArgumentNullException("Required input object is missing");
         }
 
-        public IModuleArgs SetArguments(params object[] arguments) {
-            Arguments = arguments;
+        public IModuleArgs SetArguments(params (string,object)[] arguments) {
+            if (Arguments == null) Arguments = new Dictionary<string, object>();
+            foreach (var item in arguments) {
+                if (Arguments.ContainsKey(item.Item1)) {
+                    Arguments[item.Item1] = item.Item2; 
+                } else {
+                    Arguments.Add(item.Item1, item.Item2);
+                }
+            }
             return this;
         }
 
