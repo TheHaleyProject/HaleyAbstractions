@@ -5,9 +5,10 @@ using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Haley.Abstractions {
-    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IDBCrudHandler{
+    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IAdapterCrudHandler, IDBCrudHandler{
         //This should be stateless as every controller might call this concurrently.
         bool ThrowCRUDExceptions { get; }
+        bool IsDevelopment { get; }
         Guid Id { get; }
         void SetServiceUtil(IGatewayUtil util);
         Task<object> GetFirst(object input, ResultFilter filter = ResultFilter.None);

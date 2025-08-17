@@ -7,7 +7,6 @@ using System.Collections.Generic;
 namespace Haley.Models {
     public class AdapterArgs : ParameterBase, IAdapterArgs {
         public IDBAdapter Adapter { get; set; }
-        public bool IsDevelopment { get; set; }
         public ResultFilter Filter { get; set; }
         public object Query { get; set; }
         public bool ExcludeDBInConString { get; set; }

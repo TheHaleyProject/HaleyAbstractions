@@ -7,7 +7,6 @@ namespace Haley.Models
 {
     public class ModuleArgs : ParameterBase, IModuleArgs{
         public IDBAdapter Adapter { get; set; }
-        public bool IsDevelopment { get; set; }
         public Dictionary<string, object> Arguments { get; protected set; } = new Dictionary<string, object>();
         public void ClearParameters() => ClearParametersInternal(true);
         public void ClearParameters(string groupKey) => ClearParametersInternal(groupKey);
