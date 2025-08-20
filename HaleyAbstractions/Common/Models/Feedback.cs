@@ -3,25 +3,25 @@
 namespace Haley.Models {
 
     public class Feedback : Feedback<object>, IFeedback {
-        public Feedback SetStatus(bool status) {
-            Status = status;
-            return this;
-        }
-
-        public Feedback SetMessage(string message) {
-            Message = message;
-            return this;
-        }
-
-        public Feedback SetResult(object result) {
-            Result = result;
-            return this;
-        }
-
         public Feedback Clear() {
             Status = false;
             Result = null;
             Message = string.Empty;
+            return this;
+        }
+
+        public new Feedback SetStatus(bool status) {
+            base.SetStatus(status);
+            return this;
+        }
+
+        public new Feedback SetMessage(string message) {
+            base.SetMessage(message);
+            return this;
+        }
+
+        public new Feedback SetResult(object result) {
+            base.SetResult(result);
             return this;
         }
         public Feedback() { }
@@ -42,6 +42,21 @@ namespace Haley.Models {
             Status = status;
             Message = message;
             Result = result;
+        }
+
+        public virtual Feedback<T> SetStatus(bool status) {
+            Status = status;
+            return this;
+        }
+
+        public virtual Feedback<T> SetMessage(string message) {
+            Message = message;
+            return this;
+        }
+
+        public virtual Feedback<T> SetResult(T result) {
+            Result = result;
+            return this;
         }
         public Feedback(bool status) : this(status, null) { }
         public Feedback(bool status, string message) : this(status, message, default) { }
