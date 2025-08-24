@@ -20,7 +20,7 @@
     <IncludeSymbols>true</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
-    <Version>1.2.13.1</Version>
+    <Version>1.2.14</Version>
     <PackageId>Haley.Abstractions</PackageId>
     <RootNamespace>Haley.Abstractions</RootNamespace>
     <AssemblyName>Haley.Abstractions</AssemblyName>
@@ -48,6 +48,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
+    <PackageReference Include="System.Text.Json" Version="9.0.8" />
   </ItemGroup>
 
 </Project>
