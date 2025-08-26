@@ -6,17 +6,18 @@ using System.Text.Json.Serialization;
 namespace Haley.Models
 {
     public class IdentityBase : IIdentityBase {
-        [JsonPropertyName("guid")]
-        [JsonPropertyOrder(3)]
-        public Guid Guid { get; }
-        [JsonPropertyName("key")]
-        [JsonPropertyOrder(2)]
-        public string Key { get; set; }
+
         [JsonPropertyName("id")]
-        [JsonPropertyOrder(1)]
+        [JsonPropertyOrder(0)]
         public long Id { get; set; }
+        [JsonPropertyName("key")]
+        [JsonPropertyOrder(0)]
+        public string Key { get; set; }
+        [JsonPropertyName("guid")]
+        [JsonPropertyOrder(0)]
+        public Guid Guid { get; }
         [JsonPropertyName("name")]
-        [JsonPropertyOrder(4)]
+        [JsonPropertyOrder(1)]
         public string Name { get; set; }
         public IdentityBase() : this(null) { }
         public IdentityBase(string key) {
