@@ -44,6 +44,11 @@ namespace Haley.Models {
             SetParametersInternal(groupKey, parameters);
             return this;
         }
+
+        public AdapterArgs() : base() {
+            Filter = ResultFilter.None;
+        }
+
         public AdapterArgs(string key) :base (key){
             Filter = ResultFilter.None; }
     }

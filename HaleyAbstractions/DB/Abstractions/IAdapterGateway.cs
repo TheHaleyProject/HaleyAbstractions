@@ -16,6 +16,7 @@ namespace Haley.Abstractions {
         IAdapterGateway Add(IAdapterConfig entry, bool replace = true);
         IAdapterGateway UpdateAdapter();
         IAdapterGateway Configure();
+        ITransactionHandler GetTransactionHandler();
         ITransactionHandler GetTransactionHandler(string adapterKey);
         string GetSchemaName(string adapterKey);
         IFeedback DuplicateAdapter(string existingAdapterKey, string newAdapterKey, params (string key,string value)[]connectionStringReplacements);
