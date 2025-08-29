@@ -24,6 +24,12 @@ namespace Haley.Models {
             base.SetResult(result);
             return this;
         }
+
+        public new Feedback Copy(IFeedback source) {
+            base.Copy(source);
+            return this;
+        }
+
         public Feedback() { }
         public Feedback(bool status, string message, object result) :base(status,message,result) { }
         public Feedback(bool status) : base(status, null,null) { }
@@ -53,6 +59,14 @@ namespace Haley.Models {
             Message = message;
             return this;
         }
+
+        public virtual Feedback<T> Copy(IFeedback<T> source) {
+            Status = source.Status;
+            Message = source.Message;
+            Result = source.Result;
+            return this;
+        }
+
 
         public virtual Feedback<T> SetResult(T result) {
             Result = result;
