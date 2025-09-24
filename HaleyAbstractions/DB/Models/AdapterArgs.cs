@@ -17,6 +17,8 @@ namespace Haley.Models {
         public string OutputName { get; set; }
         public bool Prepare { get; set; } = false;
         public bool TransactionMode { get; set; }
+        public bool JsonStringAsNode { get; set; }
+
         public IAdapterArgs SetAdapterKey(string key) {
             Key = key;
             return this;
