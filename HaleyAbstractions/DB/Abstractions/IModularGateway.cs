@@ -15,7 +15,7 @@ namespace Haley.Abstractions {
            where M : class, IDBModule, new(); //Register a module
         Task<IFeedback> TryRegisterModule<M>(M module, Dictionary<string, object> seed)
             where M : class,IDBModule; //Register a module
-        void SetDefaultAdapterKey(string adapterKey);
+       
         void SetDefaultAdapterKey<E>(string adapterKey) where E : Enum;
         ITransactionHandler GetTransactionHandler<E>() where E : Enum;
     }

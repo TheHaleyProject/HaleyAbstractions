@@ -10,6 +10,7 @@ namespace Haley.Models {
         public const string CONFIG_DIR_WIN = "win";
         public const string CONFIG_DIR_LINUX = "linux";
         public const string CONFIG_DIR_RESPONSEPATHMODE = "responsePathMode";
+        [Obsolete("This is directly handled inside the adapter gateway from now on")]
         public const string CONFIG_DEFADAPTER = "defadapter";
         public const string CONFIG_WRITEMODE = "writemode";
     }
