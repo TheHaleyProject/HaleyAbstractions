@@ -8,6 +8,7 @@ namespace Haley.Abstractions {
         bool ThrowExceptions { get; }
         string GetStorageRoot();
         Task<IOSSDirResponse> GetDirectoryInfo(IOSSRead input);
+        Task<IFeedback<string>> GetParent(IOSSRead input);
         Task<IOSSResponse> CreateDirectory(IOSSRead input, string rawname);
         Task<IFeedback> DeleteDirectory(IOSSRead input, bool recursive);
         Task<IOSSResponse> Upload(IOSSWrite input);

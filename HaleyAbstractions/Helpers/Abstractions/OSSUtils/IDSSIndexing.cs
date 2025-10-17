@@ -18,5 +18,6 @@ namespace Haley.Abstractions {
         Task Validate();
         bool TryGetComponentInfo<T>(string key,out T component) where T : IOSSDirectory;
         bool TryAddInfo(IOSSDirectory dirInfo, bool replace = false);
+        Task<IFeedback<string>> GetParentName(IOSSRead request);
     }
 }
