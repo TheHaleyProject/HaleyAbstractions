@@ -32,6 +32,7 @@ namespace Haley.Models {
 
         public Feedback() { }
         public Feedback(bool status, string message, object result) :base(status,message,result) { }
+        public Feedback(string message, object result) : base(message, result) { }
         public Feedback(bool status) : base(status, null,null) { }
         public Feedback(bool status, string message) : base(status, message, null) { }
     }
@@ -74,5 +75,9 @@ namespace Haley.Models {
         }
         public Feedback(bool status) : this(status, null) { }
         public Feedback(bool status, string message) : this(status, message, default) { }
+        public Feedback(string message, T result)  {
+            Message = message;
+            Result = result;
+        }
     }
 }
