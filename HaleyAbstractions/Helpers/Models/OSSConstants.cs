@@ -13,7 +13,8 @@ namespace Haley.Models {
         public const string CONFIG_DIR_RESPONSEPATHMODE = "responsePathMode";
         public const string OSS_WRITEMODE = "OSS_WRITEMODE";
         public const string OSS_FILEFORMATS = "FileFormats";
-        public const string Allowed = "Allowed";
-        public const string Restricted = "Restricted";
+        public const string ALLOWED = "Allowed";
+        public const string RESTRICTED = "Restricted";
+        public const string THROW_EX = "ThrowExceptions";
     }
 }
