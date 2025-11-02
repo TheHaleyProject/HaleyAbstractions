@@ -14,7 +14,9 @@ namespace Haley.Models {
         public const string OSS_WRITEMODE = "OSS_WRITEMODE";
         public const string OSS_FILEFORMATS = "FileFormats";
         public const string ALLOWED = "Allowed";
+        public const string ALLOWED_MIMETYPE= "AllowedMimeType";
         public const string RESTRICTED = "Restricted";
+        public const string RESTRICTED_MIMETYPE = "RestrictedMimeType";
         public const string THROW_EX = "ThrowExceptions";
     }
 }
