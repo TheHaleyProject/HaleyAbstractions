@@ -13,10 +13,7 @@ namespace Haley.Abstractions {
         new IFeedback SetResult(object result);
     }
 
-    public interface IFeedback<T> {
-        bool Status { get; set; }
-        string Trace { get; set; }
-        string Message { get; set; }
+    public interface IFeedback<T> : IFeedbackBase {
         T Result { get; set; }
         IFeedback<T> SetStatus(bool status);
         IFeedback<T> SetMessage(string message);
@@ -24,6 +21,12 @@ namespace Haley.Abstractions {
         IFeedback<T> Copy(IFeedback<T> source);
         IFeedback<T> Copy(IFeedback source);
         IFeedback<T> SetResult(T result);
+    }
+
+    public interface IFeedbackBase {
+        bool Status { get; set; }
+        string Trace { get; set; }
+        string Message { get; set; }
     }
 
     public interface IWebFeedback : IFeedback<object> {
