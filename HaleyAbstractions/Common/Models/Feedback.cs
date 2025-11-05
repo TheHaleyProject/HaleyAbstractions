@@ -1,4 +1,6 @@
 ﻿using Haley.Abstractions;
+using Haley.Enums;
+using System.Diagnostics;
 
 namespace Haley.Models {
 
@@ -7,29 +9,29 @@ namespace Haley.Models {
             Status = false;
             Result = null;
             Message = string.Empty;
+            Trace = string.Empty;
             return this;
         }
-
-        public new Feedback SetStatus(bool status) {
+        public new IFeedback SetStatus(bool status) {
             base.SetStatus(status);
             return this;
         }
-
-        public new Feedback SetMessage(string message) {
+        public new IFeedback SetMessage(string message) {
             base.SetMessage(message);
             return this;
         }
-
-        public new Feedback SetResult(object result) {
+        public new IFeedback SetTrace(string trace) {
+            base.SetTrace(trace);
+            return this;
+        }
+        public new IFeedback SetResult(object result) {
             base.SetResult(result);
             return this;
         }
-
-        public new Feedback Copy(IFeedback source) {
+        public new IFeedback Copy(IFeedback source) {
             base.Copy(source);
             return this;
         }
-
         public Feedback() { }
         public Feedback(bool status, string message, object result) :base(status,message,result) { }
         public Feedback(string message, object result) : base(message, result) { }
@@ -40,6 +42,7 @@ namespace Haley.Models {
     public class Feedback<T> : IFeedback<T> {
         public bool Status { get; set; }
         public string Message { get; set; }
+        public string Trace { get; set; }
         public T Result { get; set; }
         public override string ToString() {
             return $@"{Status} : {Message} -- {Result}";
@@ -50,26 +53,32 @@ namespace Haley.Models {
             Message = message;
             Result = result;
         }
-
-        public virtual Feedback<T> SetStatus(bool status) {
+        public virtual IFeedback<T> SetStatus(bool status) {
             Status = status;
             return this;
         }
-
-        public virtual Feedback<T> SetMessage(string message) {
+        public virtual IFeedback<T> SetMessage(string message) {
             Message = message;
             return this;
         }
-
-        public virtual Feedback<T> Copy(IFeedback<T> source) {
+        public virtual IFeedback<T> SetTrace(string trace) {
+            this.Trace = trace;
+            return this;
+        }
+        public virtual IFeedback<T> Copy(IFeedback<T> source) {
             Status = source.Status;
             Message = source.Message;
+            Trace = source.Trace;
             Result = source.Result;
             return this;
         }
-
-
-        public virtual Feedback<T> SetResult(T result) {
+        public virtual IFeedback<T> Copy(IFeedback source) {
+            Status = source.Status;
+            Message = source.Message;
+            Trace = source.Trace;
+            return this;
+        }
+        public virtual IFeedback<T> SetResult(T result) {
             Result = result;
             return this;
         }
