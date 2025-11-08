@@ -10,6 +10,7 @@ namespace Haley.Models {
             Result = null;
             Message = string.Empty;
             Trace = string.Empty;
+            Code = 0;
             return this;
         }
         public new IFeedback SetStatus(bool status) {
@@ -24,6 +25,15 @@ namespace Haley.Models {
             base.SetTrace(trace);
             return this;
         }
+        public new IFeedback SetSource(string source) {
+            base.SetSource(source);
+            return this;
+        }
+        public new IFeedback SetCode(int code) {
+            base.SetCode(code);
+            return this;
+        }
+
         public new IFeedback SetResult(object result) {
             base.SetResult(result);
             return this;
@@ -41,11 +51,13 @@ namespace Haley.Models {
 
     public class Feedback<T> : IFeedback<T> {
         public bool Status { get; set; }
+        public int Code { get; set; }
+        public string Source { get; set; }
         public string Message { get; set; }
         public string Trace { get; set; }
         public T Result { get; set; }
         public override string ToString() {
-            return $@"{Status} : {Message} -- {Result}";
+            return $@"{Status}:{Message} | Result:{Result} Code :{Code}";
         }
         public Feedback() { }
         public Feedback(bool status, string message, T result) {
@@ -61,8 +73,17 @@ namespace Haley.Models {
             Message = message;
             return this;
         }
+
+        public virtual IFeedback<T> SetSource(string source) {
+            Source = source;
+            return this;
+        }
+        public virtual IFeedback<T> SetCode(int code) {
+            Code = code;
+            return this;
+        }
         public virtual IFeedback<T> SetTrace(string trace) {
-            this.Trace = trace;
+            Trace = trace;
             return this;
         }
         public virtual IFeedback<T> Copy(IFeedback<T> source) {
@@ -70,12 +91,16 @@ namespace Haley.Models {
             Message = source.Message;
             Trace = source.Trace;
             Result = source.Result;
+            Code = source.Code;
+            Source = source.Source;
             return this;
         }
         public virtual IFeedback<T> Copy(IFeedback source) {
             Status = source.Status;
             Message = source.Message;
             Trace = source.Trace;
+            Code = source.Code;
+            Source = source.Source;
             return this;
         }
         public virtual IFeedback<T> SetResult(T result) {
