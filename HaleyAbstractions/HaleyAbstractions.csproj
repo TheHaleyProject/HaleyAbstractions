@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+ <Import Project="..\..\HaleyProject\HaleyVersion.Props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -20,7 +20,7 @@
     <IncludeSymbols>true</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIconUrl />
-    <Version>1.2.26</Version>
+    <Version>$(HaleyAbstractionsVersion)</Version>
     <PackageId>Haley.Abstractions</PackageId>
     <RootNamespace>Haley.Abstractions</RootNamespace>
     <AssemblyName>Haley.Abstractions</AssemblyName>
@@ -49,6 +49,12 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
     <PackageReference Include="System.Text.Json" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LifeCycle\Abstractions\" />
+    <Folder Include="LifeCycle\Enums\" />
+    <Folder Include="LifeCycle\Models\" />
   </ItemGroup>
 
 </Project>
