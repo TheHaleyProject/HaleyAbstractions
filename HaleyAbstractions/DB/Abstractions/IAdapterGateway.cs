@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Haley.Abstractions {
-    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IAdapterCrudHandler, IDBCrudHandler{
+    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IAdapterCrudHandler, IDBCrudHandler, IAdapterCrudHandlerEx {
         //This should be stateless as every controller might call this concurrently.
         bool ThrowCRUDExceptions { get; }
         bool IsDevelopment { get; }
