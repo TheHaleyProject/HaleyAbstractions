@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Haley.Models {
     public class AppMode {
-        public bool EnvInDevelopment { get; set; }
-        public bool AppInDevelopment { get; set; }
+        public bool IsDevelopment { get; set; }
+        public bool DebugMode { get; set; }
         public bool ThrowExceptions { get; set; }
+
+        public override string ToString() {
+            return $@"Dev={IsDevelopment} | Debug={DebugMode} | ThrowExceptions={ThrowExceptions}";
+        }
     }
 }
