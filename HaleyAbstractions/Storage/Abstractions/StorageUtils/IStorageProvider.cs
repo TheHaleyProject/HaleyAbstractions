@@ -1,6 +1,6 @@
 ﻿
 namespace Haley.Abstractions {
-    public interface IStorageProvider : IStorageCRUD {
-        
+    public interface IStorageProvider : IStorageOperations {
+        string Key { get; set; }
     }
 }
