@@ -9,7 +9,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterClient(IVaultClient info);
         Task<IFeedback> RegisterModule(IVaultModule info);
         Task<IFeedback> RegisterWorkspace(IVaultWorkSpace info);
-        (long id,Guid guid) RegisterDocuments(IVaultReadRequest request, IVaultProfileControlled holder);
+        (long id,Guid guid) RegisterDocuments(IVaultReadRequest request, IVaultProfile holder);
         Task<IFeedback> UpdateDocVersionInfo(string moduleCuid, IVaultFileRoute file, string callId = null);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, long id);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string cuid);

@@ -8,9 +8,7 @@ namespace Haley.Models {
         public StorageProfileMode Mode { get; set; }
         public string StorageProviderKey { get; set; }           // e.g. "fs-main"
         public string StagingProviderKey { get; set; }         // e.g. "b2-staging"
-
-        // Optional tuning for background worker
-        public int? MoveDelayMinutes { get; set; }
+        public string Metadata { get; set; } //Preferably in JSON format.
         public StorageProfileConfig() {
         }
     }

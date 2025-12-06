@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Haley.Abstractions {
     public interface IVaultModule : IVaultComponent {
-        IVaultProfile Client { get; set; }
+        IVaultInfo Client { get; set; }
         string DatabaseName { get; set; }
         string StorageProfileName { get; set; }
     }

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Haley.Abstractions {
     public interface IVaultWorkSpace : IVaultComponent {
-        IVaultProfile Client { get; set; }
-        IVaultProfile Module { get; set; }
+        IVaultInfo Client { get; set; }
+        IVaultInfo Module { get; set; }
         VaultControlMode ContentControl { get; set; }
         VaultParseMode ContentParse { get; set; }
         string DatabaseName { get; set; }
