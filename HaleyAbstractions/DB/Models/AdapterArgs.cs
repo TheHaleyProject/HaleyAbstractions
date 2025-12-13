@@ -18,6 +18,7 @@ namespace Haley.Models {
         public bool Prepare { get; set; } = false;
         public bool TransactionMode { get; set; }
         public bool JsonStringAsNode { get; set; }
+        public bool LogQueryInConsole { get; set; }
 
         public IAdapterArgs SetAdapterKey(string key) {
             Key = key;

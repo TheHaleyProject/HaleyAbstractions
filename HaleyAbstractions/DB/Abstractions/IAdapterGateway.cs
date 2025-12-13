@@ -8,6 +8,7 @@ namespace Haley.Abstractions {
     public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IAdapterCrudHandler, IDBCrudHandler, IAdapterCrudHandlerEx {
         //This should be stateless as every controller might call this concurrently.
         bool ThrowCRUDExceptions { get; }
+        bool LogQueryInConsole { get; set; }
         bool IsDevelopment { get; }
         Guid Id { get; }
         void SetServiceUtil(IGatewayUtil util);

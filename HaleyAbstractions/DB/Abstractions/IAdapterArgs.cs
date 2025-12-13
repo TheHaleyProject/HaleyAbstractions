@@ -11,6 +11,7 @@ namespace Haley.Abstractions
         bool TransactionMode { get; }
         ResultFilter Filter { get; set; }
         bool JsonStringAsNode { get; set; }
+        bool LogQueryInConsole { get; set; }
         bool ExcludeDBInConString { get; set; }
         //string Conn { get; set; }
         object Query { get; set; }
