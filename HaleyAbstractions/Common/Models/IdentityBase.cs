@@ -20,8 +20,9 @@ namespace Haley.Models
         [JsonPropertyOrder(1)]
         public string Name { get; set; }
 
-        public void SetGuid(Guid guid) {
+        public IIdentityBase SetGuid(Guid guid) {
             Guid = guid;
+            return this;
         }
 
         public IdentityBase() : this(null) { }

@@ -1,5 +1,5 @@
 ﻿namespace Haley.Enums {
-    public enum VaultComponent {
+    public enum VaultObjectType {
        Client,
        Module,
        WorkSpace,

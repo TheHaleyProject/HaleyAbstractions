@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Haley.Abstractions {
-    public interface IVaultModule : IVaultComponent {
-        IVaultInfo Client { get; set; }
-        string DatabaseName { get; set; }
-        string StorageProfileName { get; set; }
+    public interface IVaultModule : IVaultObject {
+        IVaultBase Client { get; set; }
+        string DatabaseName { get; set; } //Needed because based on this name is the separate database is created.
+        string StorageProfileName { get; set; } //Storage profile is also for the Module itself and not for the workspace.
+        string StorageProviderKey { get; set;  }
+        string StagingProviderKey { get; set; }
     }
 }

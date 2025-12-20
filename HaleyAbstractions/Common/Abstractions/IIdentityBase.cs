@@ -7,5 +7,6 @@ namespace Haley.Abstractions{
         Guid Guid { get; }
         long Id { get; set; }
         string Name { get; set; }
+        IIdentityBase SetGuid(Guid guid);
     }
 }

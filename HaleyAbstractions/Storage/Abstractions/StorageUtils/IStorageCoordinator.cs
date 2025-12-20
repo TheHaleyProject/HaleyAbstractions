@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Haley.Models;
 
 namespace Haley.Abstractions {
-    public interface IStorageCoordinator : IStorageOperations, IVaultRegistry, IDocFormatControl {
+    public interface IStorageCoordinator : IStorageOperations, IVaultManagement, IFileFormatPolicy,IStorageProviderRegistry {
         IStorageCoordinator SetIndexer(IVaultIndexing service); // Important as the indexing is where we store all information in the database.
         IStorageCoordinator SetConfig(IVaultRegistryConfig config);
         bool ThrowExceptions { get; }
