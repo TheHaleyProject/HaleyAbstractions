@@ -39,6 +39,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="LifeCycle\**" />
+    <EmbeddedResource Remove="LifeCycle\**" />
+    <None Remove="LifeCycle\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\Haley.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -49,12 +55,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
     <PackageReference Include="System.Text.Json" Version="9.0.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LifeCycle\Abstractions\" />
-    <Folder Include="LifeCycle\Enums\" />
-    <Folder Include="LifeCycle\Models\" />
   </ItemGroup>
 
 </Project>
