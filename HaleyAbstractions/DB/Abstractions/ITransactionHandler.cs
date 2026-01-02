@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface ITransactionHandler : IDBTransaction, IModuleExecution , IAdapterCrudHandler, IModuleStatus {
+    public interface ITransactionHandler : IDBTransaction, IModuleExecution , IModuleStatus, IAdapterCrudHandlerTyped {
         IModuleArgs CreateDBInput();
         IModuleArgs CreateDBInput(IModuleArgs args);
     }

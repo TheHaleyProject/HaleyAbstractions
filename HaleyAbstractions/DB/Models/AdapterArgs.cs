@@ -11,8 +11,6 @@ namespace Haley.Models {
         public object Query { get; set; }
         public bool ExcludeDBInConString { get; set; }
         public ILogger  Logger { get; set; }
-        public bool ReturnsResult { get; set; }
-        public bool IsScalar { get; set; }
         public Func<string, object, bool> ParamHandler { get; set; }
         public string OutputName { get; set; }
         public bool Prepare { get; set; } = false;
