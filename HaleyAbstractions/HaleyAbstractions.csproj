@@ -6,7 +6,7 @@
     <Authors>The Haley Project</Authors>
     <Company>TheHaleyProject</Company>
     <Product>Haley Abstractions</Product>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Contains common abstractions used by different haley libraries</Description>
     <Copyright>Haley</Copyright>
@@ -42,8 +42,11 @@
 
   <ItemGroup>
     <Compile Remove="LifeCycle\**" />
+    <Compile Remove="WorkFlowEngine\**" />
     <EmbeddedResource Remove="LifeCycle\**" />
+    <EmbeddedResource Remove="WorkFlowEngine\**" />
     <None Remove="LifeCycle\**" />
+    <None Remove="WorkFlowEngine\**" />
   </ItemGroup>
 
   <ItemGroup>
