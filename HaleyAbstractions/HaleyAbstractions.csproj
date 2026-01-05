@@ -6,6 +6,8 @@
     <Authors>The Haley Project</Authors>
     <Company>TheHaleyProject</Company>
     <Product>Haley Abstractions</Product>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <Description>Contains common abstractions used by different haley libraries</Description>
     <Copyright>Haley</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
