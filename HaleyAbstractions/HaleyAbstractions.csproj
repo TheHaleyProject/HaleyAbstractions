@@ -3,17 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>The Haley Project</Authors>
-    <Company>TheHaleyProject</Company>
     <Product>Haley Abstractions</Product>
-    <LangVersion>10.0</LangVersion>
-    <Nullable>enable</Nullable>
     <Description>Contains common abstractions used by different haley libraries</Description>
-    <Copyright>Haley</Copyright>
+  
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/TheHaleyProject/HaleyAbstractions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/TheHaleyProject/HaleyAbstractions</RepositoryUrl>
-    <RepositoryType>GIT</RepositoryType>
+   
     <PackageTags>Abstractions Haley</PackageTags>
     <PackageReleaseNotes>Updated ConfigManagement Interfaces</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
@@ -39,15 +35,6 @@
 	  <DebugType>portable</DebugType>
 	  <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="LifeCycle\**" />
-    <Compile Remove="WorkFlowEngine\**" />
-    <EmbeddedResource Remove="LifeCycle\**" />
-    <EmbeddedResource Remove="WorkFlowEngine\**" />
-    <None Remove="LifeCycle\**" />
-    <None Remove="WorkFlowEngine\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\Haley.png">
