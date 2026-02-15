@@ -1,4 +1,4 @@
-﻿namespace Haley.Models {
+﻿namespace Haley.Abstractions {
     public interface IEmailData {
         string[] To { get; set; }
         string[] CC { get; set; }
