@@ -18,5 +18,11 @@ namespace Haley.Abstractions {
         Task<IFeedback<DbRow>> ReadSingleAsync(IAdapterArgs input, params (string key, object value)[] parameters);
         Task<IFeedback<T>> ScalarAsync<T>(IAdapterArgs input, params (string key, object value)[] parameters);
         Task<IFeedback<int>> NonQueryAsync(IAdapterArgs input,  params (string key, object value)[] parameters);
+
+        //With Execution load
+        Task<int> ExecAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
+        Task<T?> ScalarAsync<T>(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
+        Task<DbRow?> RowAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
+        Task<DbRows> RowsAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
     }
 }
