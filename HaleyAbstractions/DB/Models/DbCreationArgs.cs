@@ -14,7 +14,6 @@ namespace Haley.Models
         public string SQLContent { get; set; }
         public Dictionary<string, string> VariablesToReplace { get; set; } = new Dictionary<string, string>();
         public Func<string ,string,string> ContentProcessor { get; set; }
-        public DbCreationArgs(string adapter_key) { Key = adapter_key;
-        }
+        public DbCreationArgs(string adapter_key) { Key = adapter_key;}
 	}
 }

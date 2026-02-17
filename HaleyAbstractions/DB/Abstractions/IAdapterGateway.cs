@@ -15,6 +15,7 @@ namespace Haley.Abstractions {
         void SetServiceUtil(IGatewayUtil util);
         IConfigurationRoot GetConfigurationRoot(bool reload = false, bool force_reload = false);
         void SetDefaultAdapterKey(string adapterKey);
+        string GetDefaultKey();
         IAdapterGateway Add(IAdapterConfig entry, bool replace = true);
         IAdapterGateway UpdateAdapter();
         IAdapterGateway Configure();
