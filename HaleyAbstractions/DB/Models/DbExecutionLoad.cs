@@ -11,10 +11,12 @@ namespace Haley.Models {
     public readonly struct DbExecutionLoad {
         public ITransactionHandler? Handler { get; }
         public CancellationToken Ct { get; }
+        public bool ThrowErrors { get; }
 
-        public DbExecutionLoad(CancellationToken ct, ITransactionHandler? th = null) {
+        public DbExecutionLoad(CancellationToken ct, ITransactionHandler? th = null, bool throwErrors = true) {
             Ct = ct;
             Handler = th;
+            ThrowErrors = throwErrors; //By default, lets throw.
         }
         public static DbExecutionLoad None => default;
     }

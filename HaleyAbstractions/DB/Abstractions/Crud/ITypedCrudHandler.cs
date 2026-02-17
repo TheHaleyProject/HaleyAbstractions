@@ -7,10 +7,9 @@ using Haley.Models;
 
 namespace Haley.Abstractions {
     public interface ITypedCrudHandler {
-        //With Execution load
-        Task<int> ExecAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
-        Task<T?> ScalarAsync<T>(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
-        Task<DbRow?> RowAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
-        Task<DbRows> RowsAsync(string key, string sql, DbExecutionLoad load = default, params DbArg[] args);
+        public Task<int> ExecAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
+        public Task<T?> ScalarAsync<T>(string sql, DbExecutionLoad load = default, params DbArg[] args);
+        public Task<DbRow?> RowAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
+        public Task<DbRows> RowsAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
     }
 }

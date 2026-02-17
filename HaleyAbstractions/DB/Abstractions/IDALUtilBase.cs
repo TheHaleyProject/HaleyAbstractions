@@ -6,11 +6,7 @@ using System.Transactions;
 using Haley.Models;
 
 namespace Haley.Abstractions {
-    public interface IDALUtilBase : IAsyncDisposable {
-        Task<int> ExecAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
-        Task<T?> ScalarAsync<T>(string sql, DbExecutionLoad load = default , params DbArg[] args);
-        Task<DbRow?> RowAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
-        Task<DbRows> RowsAsync(string sql, DbExecutionLoad load = default, params DbArg[] args);
+    public interface IDALUtilBase : IAsyncDisposable, ITypedCrudHandler {
         ITransactionHandler CreateNewTransaction();
     }
 }
