@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Haley.Abstractions {
-    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IDBCrudHandler, IAdapterCrudHandlerTyped {
+    public interface IAdapterGateway: IDictionary<string, IDBAdapter>, IDBCrudHandler, IGatewayCrudHandler {
         //This should be stateless as every controller might call this concurrently.
         bool ThrowCRUDExceptions { get; }
         bool LogQueryInConsole { get; set; }

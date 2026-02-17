@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions
 {
-    public interface ISqlHandler :IAdapterCrudHandler, IDBTransaction {
+    public interface ISqlHandler :ISqlCrudHandler, IDBTransaction {
     }
 }
