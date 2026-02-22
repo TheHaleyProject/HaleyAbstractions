@@ -25,5 +25,7 @@ namespace Haley.Services {
 
         public static GatewaySessionResult Failed(string? msg = null)
             => new GatewaySessionResult { Status = GatewaySessionStatus.Failed, Message = msg };
+        public static GatewaySessionResult NotInitiated(string? msg = null)
+            => new GatewaySessionResult { Status = GatewaySessionStatus.NotInitiated, Message = msg };
     }
 }

@@ -5,6 +5,7 @@
         Refreshed,          // session was refreshed/acquired automatically
         Missing,            // no session available (DB/cache empty)
         RequiresUserAction, // cannot be acquired automatically; human action needed
-        Failed              // unexpected failure (network/db/etc.)
+        Failed,              // unexpected failure (network/db/etc.)
+        NotInitiated
     }
 }
