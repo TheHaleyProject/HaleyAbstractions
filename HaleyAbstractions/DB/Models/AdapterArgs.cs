@@ -19,7 +19,7 @@ namespace Haley.Models {
         public bool LogQueryInConsole { get; set; }
 
         public IAdapterArgs SetAdapterKey(string key) {
-            Key = key;
+         Key = key;
             return this;
         }
 
