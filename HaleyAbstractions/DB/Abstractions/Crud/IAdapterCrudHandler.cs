@@ -11,6 +11,7 @@ namespace Haley.Abstractions {
         Task<IFeedback<DbRows>> ReadAsync(IAdapterArgs input, params (string key, object value)[] parameters);
         Task<IFeedback<DbRow>> ReadSingleAsync(IAdapterArgs input, params (string key, object value)[] parameters);
         Task<IFeedback<T>> ScalarAsync<T>(IAdapterArgs input, params (string key, object value)[] parameters);
+        Task<IFeedback<IReadOnlyList<T>>> ListAsync<T>(IAdapterArgs input, params (string key, object value)[] parameters);
         Task<IFeedback<int>> NonQueryAsync(IAdapterArgs input,  params (string key, object value)[] parameters);
     }
 }
