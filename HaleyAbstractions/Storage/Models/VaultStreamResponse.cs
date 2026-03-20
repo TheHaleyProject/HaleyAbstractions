@@ -6,7 +6,7 @@ namespace Haley.Models {
         public Stream Stream { get; set; }
         public string Extension { get; set; }
         public string SaveName { get; set; }
-        public string RedirectUrl { get; set; }
+        public string AccessUrl { get; set; }
         public VaultStreamResponse() {  }
     }
 }

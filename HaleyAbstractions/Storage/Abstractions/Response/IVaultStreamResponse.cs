@@ -11,6 +11,6 @@ namespace Haley.Abstractions {
         /// as a pre-signed download URL. <see cref="Stream"/> will be <see cref="Stream.Null"/>
         /// when this is populated.
         /// </summary>
-        string RedirectUrl { get; set; }
+        string AccessUrl { get; set; }
     }
 }

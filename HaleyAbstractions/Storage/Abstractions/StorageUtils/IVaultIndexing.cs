@@ -20,9 +20,9 @@ namespace Haley.Abstractions {
         bool TryAddInfo(IVaultObject dirInfo, bool replace = false);
         Task<IFeedback<string>> GetParentName(IVaultFileReadRequest request);
         // Chunking
-        Task<IFeedback> UpsertChunkInfo(string moduleCuid, long docVersionId, long chunkSizeMb, int totalParts, string chunkFolderName, string chunkFolderPath, bool isCompleted = false, string callId = null);
-        Task<IFeedback> UpsertChunkPart(string moduleCuid, long docVersionId, long partNumber, int sizeMb, string hash = null, string callId = null);
-        Task<IFeedback> MarkChunkCompleted(string moduleCuid, long docVersionId, string callId = null);
+        Task<IFeedback> UpsertChunkInfo(string moduleCuid, long versionId, long chunkSizeMb, int totalParts, string chunkFolderName, string chunkFolderPath, bool isCompleted = false, string callId = null);
+        Task<IFeedback> UpsertChunkPart(string moduleCuid, long versionId, long partNumber, int sizeMb, string hash = null, string callId = null);
+        Task<IFeedback> MarkChunkCompleted(string moduleCuid, long versionId, string callId = null);
         // Storage profiles
         Task<long> UpsertProvider(string name, string description = null);
         Task<long> UpsertProfile(string name);
