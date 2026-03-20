@@ -43,5 +43,12 @@ namespace Haley.Abstractions {
 
         /// <summary>Returns how many parts have been received for an active session.</summary>
         Task<IFeedback> GetChunkStatus(long docVersionId);
+
+        /// <summary>
+        /// Cancels an active chunk session: removes it from the in-memory cache and
+        /// deletes the temp chunk directory. DB chunk records are left orphaned for
+        /// offline cleanup. Returns success even when no session exists (idempotent).
+        /// </summary>
+        Task<IFeedback> AbortChunkedUpload(long docVersionId);
     }
 }
