@@ -15,6 +15,19 @@ namespace Haley.Abstractions {
         Task<IFeedback> DeleteDirectory(IVaultReadRequest input, bool recursive);
         bool WriteMode { get; }
 
+        // ── Provider / profile configuration ─────────────────────────────────
+        /// <summary>
+        /// Sets the runtime provider routing for a registered module without requiring a
+        /// DB round-trip. Call this at startup (e.g. in Program.cs) after registration.
+        /// <paramref name="storageProviderKey"/> — key of the primary provider (e.g. "FileSystem", "B2").
+        /// <paramref name="stagingProviderKey"/> — key of the staging provider, or null for none.
+        /// <paramref name="mode"/> — upload routing mode; defaults to DirectSave.
+        /// Both provider keys must already be registered with <c>AddProvider</c>.
+        /// Returns false if the module CUID is not found in the indexer cache.
+        /// </summary>
+        bool ConfigureModuleProviders(string moduleCuid, string storageProviderKey,
+            string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave);
+
         // ── Chunked Upload ────────────────────────────────────────────────────
         /// <summary>
         /// Registers the document in DB, creates a temp chunk directory, and returns the
