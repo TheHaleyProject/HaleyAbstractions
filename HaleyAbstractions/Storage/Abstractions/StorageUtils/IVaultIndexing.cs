@@ -15,6 +15,8 @@ namespace Haley.Abstractions {
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string cuid);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string wsCuid, string file_name, string dir_name = VaultConstants.DEFAULT_NAME, long dir_parent_id = 0);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, long wsId, string file_name, string dir_name = VaultConstants.DEFAULT_NAME, long dir_parent_id = 0);
+        Task<IFeedback<VaultFolderBrowseResponse>> BrowseFolder(IVaultReadRequest request, int page = 1, int pageSize = 50);
+        Task<IFeedback<VaultFileDetailsResponse>> GetFileDetails(IVaultFileReadRequest request);
         Task Validate();
         bool TryGetComponentInfo<T>(string key, out T component) where T : IVaultObject;
         bool TryAddInfo(IVaultObject dirInfo, bool replace = false);

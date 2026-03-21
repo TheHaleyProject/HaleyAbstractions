@@ -11,6 +11,8 @@ namespace Haley.Abstractions {
         string GetStorageRoot();
         Task<IVaultDirResponse> GetDirectoryInfo(IVaultReadRequest input);
         Task<IFeedback<string>> GetParent(IVaultFileReadRequest input);
+        Task<IFeedback<VaultFolderBrowseResponse>> BrowseFolder(IVaultReadRequest input, int page = 1, int pageSize = 50);
+        Task<IFeedback<VaultFileDetailsResponse>> GetFileDetails(IVaultFileReadRequest input);
         Task<IVaultResponse> CreateDirectory(IVaultReadRequest input, string rawname);
         Task<IFeedback> DeleteDirectory(IVaultReadRequest input, bool recursive);
         bool WriteMode { get; }
@@ -36,6 +38,43 @@ namespace Haley.Abstractions {
         /// </summary>
         bool ConfigureWorkspaceProviders(string workspaceCuid, string storageProviderKey,
             string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave);
+
+        // ── Placeholder / Background-Move ────────────────────────────────────
+
+        /// <summary>
+        /// Reserves a DB record (document + doc_version + version_info with flags=256 Placeholder)
+        /// and returns the pre-computed target storage location so an external process can copy
+        /// the file out-of-band (USB drop, server-side move, cloud-native copy, etc.).
+        /// <para>
+        /// For FileSystem providers the parent shard directory is created immediately,
+        /// so the caller can start the copy without any extra setup.
+        /// </para>
+        /// <para>
+        /// After the copy completes, call <see cref="FinalizePlaceholder"/> to mark the version
+        /// as InStaging or InStorage|Completed and record the final size and hash.
+        /// </para>
+        /// </summary>
+        /// <param name="request">Scope (client/module/workspace). File route is ignored.</param>
+        /// <param name="fileName">File name including extension (e.g. <c>"archive.mp4"</c>).</param>
+        /// <param name="displayName">Optional human-readable display name stored in doc_info.</param>
+        Task<IFeedback<PlaceholderInfo>> CreatePlaceholder(IVaultReadRequest request, string fileName, string displayName = null);
+
+        /// <summary>
+        /// Marks a placeholder version as complete after the out-of-band copy lands.
+        /// <list type="bullet">
+        ///   <item>toStaging=false → sets flags = InStorage|Completed (8|64); updates storage_ref.</item>
+        ///   <item>toStaging=true  → sets flags = InStaging (4); updates staging_ref.</item>
+        /// </list>
+        /// When <paramref name="size"/> is <c>null</c> and the provider is FileSystem and
+        /// <paramref name="toStaging"/> is false, the file size is read directly from disk.
+        /// </summary>
+        /// <param name="request">Scope identifying the module DB (client/module/workspace).</param>
+        /// <param name="versionId">The VersionId returned by <see cref="CreatePlaceholder"/>.</param>
+        /// <param name="toStaging">True if the file was copied to staging rather than primary storage.</param>
+        /// <param name="size">File size in bytes, or null to auto-detect (FS only).</param>
+        /// <param name="hash">Optional SHA-256 hash of the copied file.</param>
+        Task<IFeedback> FinalizePlaceholder(IVaultReadRequest request, long versionId,
+            bool toStaging = false, long? size = null, string hash = null);
 
         // ── Chunked Upload ────────────────────────────────────────────────────
         /// <summary>
