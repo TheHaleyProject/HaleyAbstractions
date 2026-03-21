@@ -28,5 +28,12 @@ namespace Haley.Abstractions {
         Task<long> UpsertProfile(string name);
         Task<long> UpsertProfileInfo(int profileId, int version, int mode, int? storageProviderId, int? stagingProviderId, string metadataJson);
         Task<bool> SetModuleStorageProfile(string moduleCuid, int profileId);
+        Task<bool> SetWorkspaceStorageProfile(string workspaceCuid, int profileInfoId);
+        /// <summary>
+        /// Walks all cached workspaces and restores any persisted storage-profile overrides from the DB.
+        /// Call once at startup after all registrations are complete so workspace provider overrides
+        /// survive process restarts without manual <see cref="ConfigureWorkspaceProviders"/> calls.
+        /// </summary>
+        Task RehydrateWorkspaceProfilesAsync();
     }
 }

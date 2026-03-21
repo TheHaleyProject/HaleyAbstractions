@@ -28,6 +28,15 @@ namespace Haley.Abstractions {
         bool ConfigureModuleProviders(string moduleCuid, string storageProviderKey,
             string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave);
 
+        /// <summary>
+        /// Sets the runtime provider routing for a registered workspace, overriding the module-level
+        /// profile for this workspace only. Pass null for <paramref name="stagingProviderKey"/> to
+        /// disable staging at workspace level. Both keys must already be registered with <c>AddProvider</c>.
+        /// Returns false if the workspace CUID is not found in the indexer cache.
+        /// </summary>
+        bool ConfigureWorkspaceProviders(string workspaceCuid, string storageProviderKey,
+            string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave);
+
         // ── Chunked Upload ────────────────────────────────────────────────────
         /// <summary>
         /// Registers the document in DB, creates a temp chunk directory, and returns the
