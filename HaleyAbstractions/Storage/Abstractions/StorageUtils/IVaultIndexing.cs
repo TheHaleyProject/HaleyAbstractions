@@ -38,5 +38,12 @@ namespace Haley.Abstractions {
         /// survive process restarts without manual <see cref="ConfigureWorkspaceProviders"/> calls.
         /// </summary>
         Task RehydrateWorkspaceProfilesAsync();
+        /// <summary>
+        /// Fetches the resolved provider keys and mode for a specific <c>profile_info.id</c>.
+        /// Returns a dictionary with keys: <c>storage_provider_key</c>, <c>staging_provider_key</c>, <c>mode</c>.
+        /// Used by the coordinator to resolve providers for existing file versions via their stored
+        /// <c>version_info.profile_info_id</c>, independent of the current module/workspace profile.
+        /// </summary>
+        Task<IFeedback> GetProfileInfo(long profileInfoId);
     }
 }
