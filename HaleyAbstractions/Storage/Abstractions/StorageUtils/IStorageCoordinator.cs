@@ -35,7 +35,8 @@ namespace Haley.Abstractions {
         /// Returns false if the module CUID is not found in the indexer cache.
         /// </summary>
         bool ConfigureModuleProviders(string moduleCuid, string storageProviderKey,
-            string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave);
+            string stagingProviderKey = null, StorageProfileMode mode = StorageProfileMode.DirectSave,
+            long profileInfoId = 0);
 
         /// <summary>
         /// Sets the runtime provider routing for a registered workspace, overriding the module-level

@@ -12,7 +12,8 @@ namespace Haley.Abstractions {
         string SuffixFile { get; set; } 
         int SplitLengthNumber { get; set; } 
         int DepthNumber { get; set; } 
-        int SplitLengthHash { get; set; } 
+        int SplitLengthHash { get; set; }
         int DepthHash { get; set; }
+        int MaxRevisionCopies { get; set; }
     }
 }
