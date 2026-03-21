@@ -17,6 +17,11 @@ namespace Haley.Abstractions {
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string wsCuid, string file_name, string dir_name = VaultConstants.DEFAULT_NAME, long dir_parent_id = 0);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, long wsId, string file_name, string dir_name = VaultConstants.DEFAULT_NAME, long dir_parent_id = 0);
         Task<IFeedback<VaultFolderBrowseResponse>> BrowseFolder(IVaultReadRequest request, int page = 1, int pageSize = 50);
+        /// <summary>
+        /// Searches for matching folders and files (latest version only) across the workspace.
+        /// The term is matched against vault names (filename stems); extension is a separate filter.
+        /// </summary>
+        Task<IFeedback<VaultFolderBrowseResponse>> SearchItems(IVaultReadRequest request, string searchTerm, VaultSearchMode searchMode, string extension = null, long directoryId = 0, bool recursive = false, int page = 1, int pageSize = 50);
         Task<IFeedback<VaultFileDetailsResponse>> GetFileDetails(IVaultFileReadRequest request);
         Task Validate();
         bool TryGetComponentInfo<T>(string key, out T component) where T : IVaultObject;
@@ -27,9 +32,9 @@ namespace Haley.Abstractions {
         Task<IFeedback> UpsertChunkPart(string moduleCuid, long versionId, long partNumber, int sizeMb, string hash = null, string callId = null);
         Task<IFeedback> MarkChunkCompleted(string moduleCuid, long versionId, string callId = null);
         // Storage profiles
-        Task<long> UpsertProvider(string name, string description = null);
-        Task<long> UpsertProfile(string name);
-        Task<long> UpsertProfileInfo(int profileId, int version, int mode, int? storageProviderId, int? stagingProviderId, string metadataJson);
+        Task<long> UpsertProvider(string displayName, string description = null);
+        Task<long> UpsertProfile(string displayName);
+        Task<long> UpsertProfileInfo(int profileId, int version, int mode, string storageProviderKey, string stagingProviderKey, string metadataJson);
         Task<bool> SetModuleStorageProfile(string moduleCuid, int profileId);
         Task<bool> SetWorkspaceStorageProfile(string workspaceCuid, int profileInfoId);
         /// <summary>
