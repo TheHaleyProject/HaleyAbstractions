@@ -11,6 +11,7 @@ namespace Haley.Abstractions {
         Task<IFeedback> RegisterWorkspace(IVaultWorkSpace info);
         Task<(long id, Guid guid)> RegisterDocuments(IVaultReadRequest request, IVaultInfo holder);
         Task<IFeedback> UpdateDocVersionInfo(string moduleCuid, IVaultFileRoute file, string callId = null);
+        Task<IFeedback> UpdateDocDisplayName(string moduleCuid, long versionId, string displayName);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, long id);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string cuid);
         Task<IFeedback> GetDocVersionInfo(string moduleCuid, string wsCuid, string file_name, string dir_name = VaultConstants.DEFAULT_NAME, long dir_parent_id = 0);
