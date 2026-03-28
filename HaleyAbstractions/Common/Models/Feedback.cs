@@ -42,6 +42,9 @@ namespace Haley.Models {
             base.Copy(source);
             return this;
         }
+        public static Feedback Ok(object result = null) => new Feedback(true) { Result = result };
+        public static Feedback Fail(string message, object result = null) => new Feedback(false, message) { Result = result };
+
         public Feedback() { }
         public Feedback(bool status, string message, object result) :base(status,message,result) { }
         public Feedback(string message, object result) : base(message, result) { }
