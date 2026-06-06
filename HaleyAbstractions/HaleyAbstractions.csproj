@@ -7,8 +7,8 @@
     <Description>Contains common abstractions used by different haley libraries</Description>
   
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/TheHaleyProject/HaleyAbstractions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/TheHaleyProject/HaleyAbstractions</RepositoryUrl>
+    <PackageProjectUrl>$(ProjectBaseUrl)Abstractions</PackageProjectUrl>
+    <RepositoryUrl>$(ProjectBaseUrl)Abstractions</RepositoryUrl>
    
     <PackageTags>Abstractions Haley</PackageTags>
     <PackageReleaseNotes>Updated ConfigManagement Interfaces</PackageReleaseNotes>
