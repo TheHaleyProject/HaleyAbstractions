@@ -1,4 +1,5 @@
-﻿using Haley.Enums;
+using Haley.Enums;
+using Haley.Models;
 using System;
 
 namespace Haley.Abstractions {
@@ -9,6 +10,7 @@ namespace Haley.Abstractions {
         string DBAString { get; set; }
         string DBName { get; set; }
         TargetDB DBType { get; set; }
+        ConInfo ConnectionInfo { get; set; }
         string SchemaName { get; set; }
         string Sha { get; set; }
         IAdapterConfig Update(IAdapterConfig entry);
