@@ -8,6 +8,7 @@ namespace Haley.Abstractions {
     public interface IFeedback : IFeedback<object> {
         new IFeedback SetStatus(bool status);
         new IFeedback SetMessage(string message);
+        new IFeedback SetKey(string key);
         new IFeedback SetTrace(string trace);
         new IFeedback SetSource(string source);
         new IFeedback SetCode(int code);
@@ -21,6 +22,7 @@ namespace Haley.Abstractions {
         IFeedback<T> SetSource(string source);
         IFeedback<T> SetCode(int code);
         IFeedback<T> SetMessage(string message);
+        IFeedback<T> SetKey(string key);
         IFeedback<T> SetTrace(string trace);
         IFeedback<T> Copy(IFeedback<T> source);
         IFeedback<T> Copy(IFeedback source);
@@ -29,6 +31,7 @@ namespace Haley.Abstractions {
 
     public interface IFeedbackBase {
         int Code { get; set; }
+        string Key { get; set; }
         string Source { get; set; }
         bool Status { get; set; }
         string Trace { get; set; }

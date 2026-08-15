@@ -9,6 +9,7 @@ namespace Haley.Models {
             Status = false;
             Result = null;
             Message = string.Empty;
+            Key = string.Empty;
             Trace = string.Empty;
             Code = 0;
             return this;
@@ -19,6 +20,10 @@ namespace Haley.Models {
         }
         public new IFeedback SetMessage(string message) {
             base.SetMessage(message);
+            return this;
+        }
+        public new IFeedback SetKey(string key) {
+            base.SetKey(key);
             return this;
         }
         public new IFeedback SetTrace(string trace) {
@@ -55,12 +60,13 @@ namespace Haley.Models {
     public class Feedback<T> : IFeedback<T> {
         public bool Status { get; set; }
         public int Code { get; set; }
+        public string Key { get; set; }
         public string Source { get; set; }
         public string Message { get; set; }
         public string Trace { get; set; }
         public T Result { get; set; }
         public override string ToString() {
-            return $@"{Status}:{Message} | Result:{Result} Code :{Code}";
+            return $@"{Status}:{Message} | Result:{Result} Code:{Code} Key:{Key}";
         }
         public Feedback() { }
         public Feedback(bool status, string message, T result) {
@@ -74,6 +80,11 @@ namespace Haley.Models {
         }
         public virtual IFeedback<T> SetMessage(string message) {
             Message = message;
+            return this;
+        }
+
+        public virtual IFeedback<T> SetKey(string key) {
+            Key = key;
             return this;
         }
 
@@ -92,6 +103,7 @@ namespace Haley.Models {
         public virtual IFeedback<T> Copy(IFeedback<T> source) {
             Status = source.Status;
             Message = source.Message;
+            Key = source.Key;
             Trace = source.Trace;
             Result = source.Result;
             Code = source.Code;
@@ -101,6 +113,7 @@ namespace Haley.Models {
         public virtual IFeedback<T> Copy(IFeedback source) {
             Status = source.Status;
             Message = source.Message;
+            Key = source.Key;
             Trace = source.Trace;
             Code = source.Code;
             Source = source.Source;
