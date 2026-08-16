@@ -11,7 +11,7 @@
     <RepositoryUrl>$(ProjectBaseUrl)Abstractions</RepositoryUrl>
    
     <PackageTags>Abstractions Haley</PackageTags>
-    <PackageReleaseNotes>Updated ConfigManagement Interfaces</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed the obsolete DbCreationArgs database lifecycle contract.</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>Haley.png</PackageIcon>
